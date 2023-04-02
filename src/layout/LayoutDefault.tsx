@@ -1,6 +1,6 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import { Navbar, Sidebar } from '../modules';
+import { Navbar, Sidebar } from '~/modules';
 
 const LayoutDefault = () => {
     return (
