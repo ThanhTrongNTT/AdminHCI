@@ -1,4 +1,4 @@
-export default function className(...arg: any) {
+export function className(...arg: any) {
     return arg
         .reducer((acc: any, val: any) => {
             if (typeof val === 'string') return acc.concat(val.split(' '));
