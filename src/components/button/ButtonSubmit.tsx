@@ -1,4 +1,4 @@
-import className from '~/utils/className';
+import { className } from '~/utils/className';
 
 type PropTypes = {
     children: any;

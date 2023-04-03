@@ -1,5 +1,5 @@
 import React from 'react';
-import className from '~/utils/className';
+import { className } from '~/utils/className';
 import { IconTrash } from '../icon/Icon';
 
 type PropTypes = {
