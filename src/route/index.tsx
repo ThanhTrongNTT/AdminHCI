@@ -1,7 +1,7 @@
-import React from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import LayoutDefault from '~/layout/LayoutDefault';
 import Home from '~/screens/home/Home';
+import Login from '~/screens/login/Login';
 import PrivateRoute from './privateRoute/PrivateRoute';
 
 function DeclareRouter() {
@@ -9,7 +9,7 @@ function DeclareRouter() {
         <>
             <Routes>
                 <Route path='/' element={<Navigate to={'/admin'} />} />
-                <Route path='/login' />
+                <Route path='/login' element={<Login />} />
                 <Route path='/admin' element={<PrivateRoute />}>
                     <Route element={<LayoutDefault />}>
                         <Route path='' element={<Home />} />

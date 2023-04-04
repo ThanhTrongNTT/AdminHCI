@@ -52,7 +52,7 @@ const Input = ({
                     error.length > 0 ? 'border-red-700 text-red-700' : 'border-gray-c3 text-black',
                     children ? 'pr-16' : '',
                     pointer && 'cursor-pointer',
-                    // 'focus:border-gray-c6 transition-all px-3 py-3 m-2',
+                    'focus:border-gray-c6 transition-all px-3 py-3 m-2',
                 )}
                 placeholder={error.length > 0 ? '' : placeholder}
                 {...field}
