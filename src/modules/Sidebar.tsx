@@ -7,6 +7,7 @@ import {
     IconCourse,
 } from '../components/icon/Icon';
 import { toast } from 'react-toastify';
+import LogoDefault from '~/components/logo/LogoDefault';
 
 const Sidebar = () => {
     const Menus = [
@@ -32,16 +33,15 @@ const Sidebar = () => {
         //     ],
         // },
     ];
-    const toaster = () => {
-        toast.error(`User does not esited!`, {
-            autoClose: 500,
-            delay: 10,
-            draggable: true,
-            pauseOnHover: false,
-        });
-    };
     return (
-        <div className='bg-white h-fit rounded-xl m-4 w-20 lg:w-60 fixed top-0'>
+        <div className='bg-white rounded-xl m-4 py-5 w-20 lg:w-60 fixed top-0'>
+            <div className='flex justify-center p-10'>
+                {/* <Logo /> */}
+                {/* <Link to={'/admin'}>
+                    <h1 className='text-sm font-OpenSans font-bold'>Teaching Me</h1>
+                </Link> */}
+                <LogoDefault />
+            </div>
             <hr className='mx-6 border-1.5 border-gray-c2' />
             <div className='px-6'>
                 <ul className='pt-2'>
@@ -64,8 +64,6 @@ const Sidebar = () => {
                     ))}
                 </ul>
             </div>
-            <hr className='mx-6 border-1.5 border-gray-c2' />
-            <button onClick={toaster}>Click me</button>
         </div>
     );
 };
