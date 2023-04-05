@@ -23,21 +23,25 @@ const Login = () => {
         mode: 'onSubmit',
     });
     return (
-        <div className='fixed inset-0 bg-gradient-to-r from-orange-400 via-red-500 to-pink-500 flex items-center justify-center'>
-            <div className='flex flex-col items-center mx-auto p-5 bg-white rounded-2xl shadow-lg w-[40%]'>
+        <div className='fixed inset-0 flex items-center justify-center'>
+            <div className='flex flex-col items-center mx-auto px-14 py-4 bg-white rounded-2xl shadow-lg'>
                 <IconUser />
                 <Link to={'/admin'}>
                     <h1 className='text-black text-3xl font-bold'>Trip Guide</h1>
                 </Link>
-                <form className='text-center w-[70%] mx-auto' onSubmit={handleSubmit(loginHandler)}>
+                <form className='text-center w-full' onSubmit={handleSubmit(loginHandler)}>
                     <div className='flex flex-col'>
                         <FormGroup>
-                            <label htmlFor='' className='text-lg font-semibold text-left'>
+                            <label
+                                htmlFor='email'
+                                className='text-lg font-semibold text-left cursor-pointer'
+                            >
                                 Email
                             </label>
                             <Input
                                 variant={'outlined'}
                                 control={control}
+                                id='email'
                                 name='email'
                                 type='email'
                                 placeholder='Tên đăng nhập'
@@ -45,13 +49,17 @@ const Login = () => {
                             />
                         </FormGroup>
                         <FormGroup>
-                            <label htmlFor='' className='text-lg font-semibold text-left'>
+                            <label
+                                htmlFor='password'
+                                className='text-lg font-semibold text-left cursor-pointer'
+                            >
                                 Password
                             </label>
                             <Input
                                 variant={'outlined'}
                                 control={control}
                                 name='password'
+                                id='password'
                                 type={showPassword ? 'text' : 'password'}
                                 placeholder='Mật khẩu'
                                 error={errors.email?.message ?? ''}
@@ -73,10 +81,10 @@ const Login = () => {
                 {/* <Link to={'/forgot'}>
                     <span className='text-lg font-semibold text-center my-5'>Quên mật khẩu ?</span>
                 </Link> */}
-                <span className='text-sm font-thin w-[70%] text-center pt-2'>
+                <span className='text-sm font-thin text-center pt-2'>
                     Việc bạn tiếp tục sử dụng trang web này đồng nghĩa bạn đồng ý với{' '}
                     <Link to={'/home'}>
-                        <p className='font-bold cursor-pointer'>
+                        <p className='font-bold cursor-pointer mt-2'>
                             Điều khoản sử dụng của chúng tôi.
                         </p>
                     </Link>

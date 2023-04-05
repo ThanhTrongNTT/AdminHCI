@@ -7,7 +7,7 @@ const Navbar = () => {
         <>
             <div className='flex h-8 bg-transparent mt-3 justify-end'>
                 <div className='flex'>
-                    <div className='flex bg-white rounded-lg p-2 items-center'>
+                    <div className='flex bg-white rounded-lg px-3 items-center'>
                         <span className='cursor-pointer px-2'>
                             <IconSearch />
                         </span>

@@ -28,20 +28,18 @@ const Home = () => {
     return (
         <>
             <div>
-                <div className='flex p-4 bg-transparent m-2 rounded-lg'>
-                    <div className='flex'>
-                        {widgets.map((widget, index) => (
-                            <>
-                                <Widget
-                                    key={index}
-                                    title={widget.title}
-                                    content={widget.content}
-                                    percent={widget.percent}
-                                    icon={widget.icon}
-                                />
-                            </>
-                        ))}
-                    </div>
+                <div className='grid grid-cols-4 auto-rows-auto gap-y-4'>
+                    {widgets.map((widget, index) => (
+                        <>
+                            <Widget
+                                key={index}
+                                title={widget.title}
+                                content={widget.content}
+                                percent={widget.percent}
+                                icon={widget.icon}
+                            />
+                        </>
+                    ))}
                 </div>
                 {/* <div className='flex'>
                     <div className='bg-white w-[50%] p-5 rounded-2xl ml-8'>

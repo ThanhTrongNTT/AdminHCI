@@ -4,13 +4,13 @@ import { Navbar, Sidebar } from '~/modules';
 
 const LayoutDefault = () => {
     return (
-        <div className='flex'>
-            <div className='flex-initial w-[20%]'>
+        <div>
+            <Navbar />
+            <div className='flex flex-row mt-6 px-4 gap-5'>
                 <Sidebar />
-            </div>
-            <div className='flex flex-col w-full'>
-                <Navbar />
-                <Outlet />
+                <div className='flex-1'>
+                    <Outlet />
+                </div>
             </div>
         </div>
     );

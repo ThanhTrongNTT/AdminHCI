@@ -13,6 +13,7 @@ type InputProps = {
     type: any;
     error: any;
     placeholder: string;
+    id?: string;
 };
 const Input = ({
     pointer,

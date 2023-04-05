@@ -2,8 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+    --cl-primary: linear-gradient(to right, #fb923c, #ef4444, #ec4899);
+}
+
 @layer {
     html {
+        background: var(--cl-primary);
         background-attachment: fixed;
     }
 }

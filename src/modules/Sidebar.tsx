@@ -34,8 +34,9 @@ const Sidebar = () => {
         // },
     ];
     return (
-        <div className='bg-white rounded-xl m-4 py-5 w-20 lg:w-60 fixed top-0'>
-            <div className='flex justify-center p-10'>
+        // <div className='bg-white rounded-xl m-4 py-5 w-20 lg:w-60 fixed top-0'>
+        <div className='bg-white rounded-xl py-5 w-20 lg:w-[250px]'>
+            <div className='flex justify-center p-4'>
                 {/* <Logo /> */}
                 {/* <Link to={'/admin'}>
                     <h1 className='text-sm font-OpenSans font-bold'>Teaching Me</h1>
