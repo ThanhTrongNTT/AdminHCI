@@ -17,7 +17,7 @@ const LogoDefault = ({ className = '' }) => {
                     className='logo h-7 w-7 lg:h-[38px] lg:w-10'
                 /> */}
                 <div className='name-page font-OpenSans text-sm font-bold text-c2  lg:text-xl'>
-                    Quần áo nhà làm
+                    Palmo
                 </div>
             </div>
         </Link>

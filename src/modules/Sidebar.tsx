@@ -14,12 +14,12 @@ const Sidebar = () => {
         { title: 'Dashboard', link: '/admin' },
         { title: 'Users', link: 'users', icon: <IconUser /> },
         {
-            title: 'Locations',
-            link: 'locations',
+            title: 'Product',
+            link: 'products',
             icon: <IconBlog />,
         },
-        { title: 'Tours', link: 'tours', icon: <IconCourse /> },
-        { title: 'Bookings', link: 'bookings', icon: <IconCategory /> },
+        { title: 'Orders', link: 'order', icon: <IconCourse /> },
+        { title: 'Sales', link: 'sales', icon: <IconCategory /> },
         // { title: 'Comments', link: 'comments', icon: <IconComment /> },
         // {
         //     title: 'Analysis',

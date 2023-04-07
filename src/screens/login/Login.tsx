@@ -27,7 +27,7 @@ const Login = () => {
             <div className='flex flex-col items-center mx-auto px-14 py-4 bg-white rounded-2xl shadow-lg'>
                 <IconUser />
                 <Link to={'/admin'}>
-                    <h1 className='text-black text-3xl font-bold'>Trip Guide</h1>
+                    <h1 className='text-black text-3xl font-bold'>Palmo Clothes</h1>
                 </Link>
                 <form className='text-center w-full' onSubmit={handleSubmit(loginHandler)}>
                     <div className='flex flex-col'>
