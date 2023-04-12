@@ -21,7 +21,6 @@ const Navbar = () => {
                             <span className='text-white p-1.5'>Sign-in</span>
                         </Link>
                     }
-
                     <div className='flex items-center mx-5'>
                         <div className='flex items-center gap-2'>
                             <div className='flex items-center'>

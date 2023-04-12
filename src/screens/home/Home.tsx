@@ -30,15 +30,13 @@ const Home = () => {
             <div>
                 <div className='grid grid-cols-4 auto-rows-auto gap-y-4'>
                     {widgets.map((widget, index) => (
-                        <>
-                            <Widget
-                                key={index}
-                                title={widget.title}
-                                content={widget.content}
-                                percent={widget.percent}
-                                icon={widget.icon}
-                            />
-                        </>
+                        <Widget
+                            key={index}
+                            title={widget.title}
+                            content={widget.content}
+                            percent={widget.percent}
+                            icon={widget.icon}
+                        />
                     ))}
                 </div>
                 {/* <div className='flex'>

@@ -18,7 +18,8 @@ module.exports = {
                 Muli: ['Muli', 'sans-serif'],
             },
             colors: {
-                background: '#172b4d',
+                // background: '#172b4d',
+                background: '#fff',
                 primary: '#5e72e4',
                 secondary: '#8392ab',
                 info: '#11cdef',
