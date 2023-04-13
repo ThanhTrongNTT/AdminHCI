@@ -1,11 +1,10 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import LayoutDefault from '~/layout/LayoutDefault';
 import Home from '~/screens/home/Home';
+import ListUser from '~/screens/list/ListUser';
 import Login from '~/screens/login/Login';
 import PrivateRoute from './privateRoute/PrivateRoute';
-import ListUser from '~/screens/list/ListUser';
-import NewUser from '~/screens/new/NewUser';
-import { DarkThemeToggle, useTheme, useThemeMode } from 'flowbite-react';
+import ListProduct from '~/screens/list/ListProduct';
 
 function DeclareRouter() {
     return (
@@ -18,25 +17,9 @@ function DeclareRouter() {
                     <Route element={<LayoutDefault />}>
                         <Route path='' element={<Home />} />
                         <Route path='users' element={<ListUser />} />
-                        <Route path='user'>
-                            <Route path=':userId' />
-                            <Route path='new' element={<NewUser />} />
-                        </Route>
-                        <Route path='products' />
-                        <Route path='product'>
-                            <Route path=':productId' />
-                            <Route path='new' />
-                        </Route>
+                        <Route path='products' element={<ListProduct />} />
                         <Route path='coupons' />
-                        <Route path='coupon'>
-                            <Route path=':couponId' />
-                            <Route path='new' />
-                        </Route>
                         <Route path='orders' />
-                        <Route path='order'>
-                            <Route path=':orderId' />
-                            <Route path='new' />
-                        </Route>
                     </Route>
                 </Route>
             </Routes>

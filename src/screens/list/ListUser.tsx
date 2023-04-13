@@ -1,52 +1,85 @@
 import { Button, Modal, Pagination } from 'flowbite-react';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import NewUser from '../new/NewUser';
+import { useForm } from 'react-hook-form';
 
 function ListUser() {
-    const navigate = useNavigate();
     const [currentPage, setCurrentPage] = useState(1);
-    const [isModal, setIsModal] = useState(false);
+    const [modalEdit, setModalEdit] = useState(false);
+    const [modalNew, setModalNew] = useState(false);
     const onPageChange = (page: number) => {
         setCurrentPage(page);
     };
 
-    const onClose = () => {
-        setIsModal(!isModal);
+    const onCloseNew = () => {
+        setModalNew(!modalNew);
     };
-    const onSubmit = () => {
-        setIsModal(!isModal);
+    const onCloseEdit = () => {
+        setModalEdit(!modalEdit);
+    };
+    const onSubmitEdit = () => {
+        setModalEdit(!modalEdit);
+    };
+    const onSubmitNew = ({ fullName, address, ...values }: any) => {
+        const tour = {
+            tourDetail: {
+                fullName,
+                address,
+                ...values,
+            },
+        };
+        console.log(tour);
+        setModalNew(!modalNew);
     };
     return (
         <div className='p-2'>
-            <div className='bg-white'>
-                <Modal show={isModal} size='7xl' position='center' popup={true} onClose={onClose}>
+            <div>
+                <Modal
+                    show={modalNew}
+                    size='7xl'
+                    position='center'
+                    popup={true}
+                    onClose={onCloseNew}
+                >
                     <Modal.Header className='bg-white' />
                     <Modal.Body className='bg-white'>
-                        <div className='space-y-6 px-6 pb-4 sm:pb-6 lg:px-8 xl:pb-8'>
-                            {' '}
-                            <NewUser />
-                        </div>
+                        <NewUser onSubmit={onSubmitNew} onCancel={onCloseNew} />
                     </Modal.Body>
-                    <Modal.Footer className='bg-white rounded-b'>
-                        <div className='flex justify-center gap-4'>
-                            <Button color='success' onClick={onSubmit}>
-                                Yes, I'm sure
-                            </Button>
-                            <Button color='failure' onClick={onClose}>
+                </Modal>
+            </div>
+            <div>
+                <Modal
+                    show={modalEdit}
+                    size='7xl'
+                    position='center'
+                    popup={true}
+                    onClose={onCloseEdit}
+                >
+                    <Modal.Header className='bg-white' />
+                    <Modal.Body className='bg-white'>
+                        <div>
+                            <h1>Thành Trọng</h1>
+                            <Button color='failure' onClick={onSubmitEdit}>
                                 No, cancel
                             </Button>
                         </div>
-                    </Modal.Footer>
+                    </Modal.Body>
                 </Modal>
             </div>
-            <Button
-                color='gray'
-                className='rounded-2xl mx-8 border px-2 m-4'
-                onClick={() => setIsModal(!isModal)}
+            <button
+                color='white'
+                className='rounded-2xl mx-8 border px-4 py-2 m-4 bg-white hover:bg-gray-c5'
+                onClick={() => setModalNew(!modalNew)}
             >
                 Click Me 2
-            </Button>
+            </button>
+            <button
+                color='white'
+                className='rounded-2xl mx-8 border px-4 py-2 m-4 bg-white hover:bg-gray-c5'
+                onClick={() => setModalEdit(!modalEdit)}
+            >
+                Click Edit
+            </button>
             <div className='overflow-x-auto rounded-2xl mx-8 border border-gray-c4'>
                 <table className='bg-white  w-[100%] text-sm text-left text-gray-400'>
                     <thead>
@@ -106,10 +139,11 @@ function ListUser() {
             </div>
             <div className='flex items-center justify-center text-center'>
                 <Pagination
-                    showIcons={true}
                     currentPage={currentPage}
-                    totalPages={3}
+                    layout='pagination'
                     onPageChange={onPageChange}
+                    showIcons={true}
+                    totalPages={10}
                 />
             </div>
         </div>
