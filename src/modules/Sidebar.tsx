@@ -17,7 +17,7 @@ const Sidebar = () => {
             link: 'products',
             icon: <IconCategory />,
         },
-        { title: 'Orders', link: 'order', icon: <IconCart /> },
+        { title: 'Orders', link: 'orders', icon: <IconCart /> },
         { title: 'Coupons', link: 'coupons', icon: <IconCourse /> },
     ];
     return (

@@ -1,5 +1,3 @@
-import { IconMoney } from '../icon/Icon';
-
 type WidgetProps = {
     title: string;
     content: string;

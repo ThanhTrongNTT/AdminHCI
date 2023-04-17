@@ -1,8 +1,6 @@
 import { Button } from 'flowbite-react';
-import React from 'react';
 import { useForm } from 'react-hook-form';
 import WrapperField from '~/components/common/WrapperField';
-import Dropdown from '~/components/dropdown/Dropdown';
 import InputDefault from '~/components/input/InputDefault';
 
 type NewUserProps = {
@@ -13,9 +11,9 @@ function NewUser({ onSubmit, onCancel }: NewUserProps) {
     const {
         handleSubmit,
         control,
-        setValue,
+        // setValue,
         reset,
-        formState: { isSubmitSuccessful },
+        // formState: { isSubmitSuccessful },
     } = useForm();
     const resetForm = () => {
         reset({

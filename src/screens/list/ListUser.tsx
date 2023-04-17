@@ -1,7 +1,6 @@
 import { Button, Modal, Pagination } from 'flowbite-react';
 import { useState } from 'react';
 import NewUser from '../new/NewUser';
-import { useForm } from 'react-hook-form';
 
 function ListUser() {
     const [currentPage, setCurrentPage] = useState(1);
@@ -31,6 +30,7 @@ function ListUser() {
         console.log(tour);
         setModalNew(!modalNew);
     };
+
     return (
         <div className='p-2'>
             <div>

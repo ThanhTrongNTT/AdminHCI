@@ -7,12 +7,16 @@ import { toast } from 'react-toastify';
 
 const AxiosClient = axios.create({
     baseURL: process.env.REACT_APP_API_URL,
-    // baseURL: 'http://localhost:8080/api/v1',
+    // baseURL: 'http://localhost:8081/api/v1/',
     headers: {
         'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
     },
 });
 AxiosClient.interceptors.request.use(async (config: AxiosRequestConfig) => {
+    // spinning start to show
+    // UPDATE: Add this code to show global loading indicator
+    document.body.classList.add('loading-indicator');
     const accessToken = await sessionStorage.getItem('accessToken');
     if (accessToken)
         config.headers = {
@@ -24,6 +28,9 @@ AxiosClient.interceptors.request.use(async (config: AxiosRequestConfig) => {
 });
 AxiosClient.interceptors.response.use(
     async (response) => {
+        // spinning hide
+        // UPDATE: Add this code to hide global loading indicator
+        document.body.classList.remove('loading-indicator');
         if (response && response.data) {
             return response.data;
         }

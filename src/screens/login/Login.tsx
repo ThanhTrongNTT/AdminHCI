@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import FormGroup from '~/components/common/FormGroup';
@@ -8,17 +7,20 @@ import TogglePassword from '~/components/toogle/TogglePassword';
 import useToggleValue from '~/hooks/useToggleValue';
 
 const Login = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const loginHandler = async (values: any) => {
-        const { email, password } = values;
-    };
+    // const [email, setEmail] = useState('');
+    // const [password, setPassword] = useState('');
+    // const loginHandler = async (values: any) => {
+    //     const { email, password } = values;
+    // };
 
     const { value: showPassword, handleToggleValue: handleTogglePassword } = useToggleValue();
     const {
-        handleSubmit,
+        // handleSubmit,
         control,
-        formState: { errors, isValid, isSubmitting },
+        formState: {
+            errors,
+            // isValid, isSubmitting
+        },
     } = useForm({
         mode: 'onSubmit',
     });
@@ -29,7 +31,10 @@ const Login = () => {
                 <Link to={'/admin'}>
                     <h1 className='text-black text-3xl font-bold'>Palmo Clothes</h1>
                 </Link>
-                <form className='text-center w-full' onSubmit={handleSubmit(loginHandler)}>
+                <form
+                    className='text-center w-full'
+                    // onSubmit={handleSubmit(loginHandler)}
+                >
                     <div className='flex flex-col'>
                         <FormGroup>
                             <label
