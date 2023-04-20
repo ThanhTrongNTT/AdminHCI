@@ -18,17 +18,17 @@
         "baseUrl": "./",
         "paths": {
             "~/*": ["src/*"],
-            "@assets/*": ["src/assets/*"],
-            "@images/*": ["src/assets/images/*"],
-            "@redux/*": ["src/redux/*"],
-            "@components/*": ["src/components/*"],
-            "@screens/*": ["src/screens/*"],
-            "@api/*": ["src/screens/*"],
-            "@layout/*": ["src/screens/*"],
-            "@data/*": ["src/screens/*"],
-            "@modules/*": ["src/screens/*"],
-            "@route/*": ["src/screens/*"],
-            "@utils/*": ["src/screens/*"]
+            "@assets/*": ["./src/assets/*"],
+            "@images/*": ["./src/assets/images/*"],
+            "@redux/*": ["./src/redux/*"],
+            "@components/*": ["./src/components/*"],
+            "@screens/*": ["./src/screens/*"],
+            "@api/*": ["./src/screens/*"],
+            "@layout/*": ["./src/screens/*"],
+            "@data/*": ["./src/screens/*"],
+            "@modules/*": ["./src/screens/*"],
+            "@route/*": ["./src/screens/*"],
+            "@utils/*": ["./src/screens/*"]
         }
     },
     "include": ["src"]

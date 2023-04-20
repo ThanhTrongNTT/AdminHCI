@@ -10,12 +10,12 @@
                     "@images": "./src/assets/images",
                     "@redux": "./src/redux",
                     "@components": "./src/components",
-                    "@api/*": "src/screens/*",
-                    "@layout/*": "src/screens/*",
-                    "@data/*": "src/screens/*",
-                    "@modules/*": "src/screens/*",
-                    "@route/*": "src/screens/*",
-                    "@utils/*": "src/screens/*"
+                    "@api/*": "./src/screens/*",
+                    "@layout/*": "./src/screens/*",
+                    "@data/*": "./src/screens/*",
+                    "@modules/*": "./src/screens/*",
+                    "@route/*": "./src/screens/*",
+                    "@utils/*": "./src/screens/*"
                 }
             }
         ]

@@ -24,18 +24,6 @@ const Home = () => {
                         />
                     ))}
                 </div>
-                {/* <div className='flex'>
-                    <div className='bg-white w-[50%] p-5 rounded-2xl ml-8'>
-                        <span className='text-base font-semibold p-3'>Sales overview</span>
-                        <Chart options={options} type='bar' series={series} width='80%' />
-                    </div>
-                </div> */}
-                {/* <div className='flex my-10'>
-                    <div className='bg-white w-[50%] p-5 rounded-2xl ml-8'>
-                        <span className='text-base font-semibold p-3'>Sales overview</span>
-                        <Chart options={options} type='bar' series={series} width='80%' />
-                    </div>
-                </div> */}
             </div>
         </>
     );
