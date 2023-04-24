@@ -1,26 +1,54 @@
-import React from 'react';
+import { Modal } from 'flowbite-react';
+import React, { useState } from 'react';
+import NewProduct from '../new/NewProduct';
 
 function ListProduct() {
+    const [modalEdit, setModalEdit] = useState(false);
+    const onCloseEdit = () => {
+        setModalEdit(!modalEdit);
+    };
     return (
         <>
+            <button
+                color='white'
+                className='rounded-2xl mx-8 border px-4 py-2 m-4 bg-white hover:bg-gray-c5'
+                onClick={() => setModalEdit(!modalEdit)}
+            >
+                Click Edit
+            </button>
             <div className='overflow-x-auto rounded-2xl mx-8 border border-gray-c4'>
+                <div>
+                    <Modal
+                        show={modalEdit}
+                        size='7xl'
+                        position='center'
+                        popup={true}
+                        onClose={onCloseEdit}
+                    >
+                        <Modal.Header className='bg-white' />
+                        <Modal.Body className='bg-white'>
+                            <NewProduct onSubmit={() => {}} onCancel={onCloseEdit} />
+                        </Modal.Body>
+                    </Modal>
+                </div>
+
                 <table className='bg-white  w-[100%] text-sm text-left text-gray-400'>
                     <thead>
                         <tr>
                             <th scope='col' className='py-3 px-6'>
-                                Avatar
+                                Image
                             </th>
                             <th scope='col' className='py-3 px-6'>
-                                Email
+                                Product Name
                             </th>
                             <th scope='col' className='py-3 px-6'>
-                                Full Name
+                                Title
                             </th>
                             <th scope='col' className='py-3 px-6'>
-                                Phone Number
+                                Subtitle
                             </th>
                             <th scope='col' className='py-3 px-6'>
-                                Action
+                                Sizes
                             </th>
                         </tr>
                     </thead>
