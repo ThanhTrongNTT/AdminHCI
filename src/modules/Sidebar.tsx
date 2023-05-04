@@ -17,11 +17,21 @@ const Sidebar = () => {
             link: 'products',
             icon: <IconCategory />,
         },
+        {
+            title: 'Product Color',
+            link: 'productColors',
+            icon: <IconCategory />,
+        },
+        {
+            title: 'Product Size',
+            link: 'productSizes',
+            icon: <IconCategory />,
+        },
         { title: 'Orders', link: 'orders', icon: <IconCart /> },
         { title: 'Coupons', link: 'coupons', icon: <IconCourse /> },
     ];
     return (
-        <div className='bg-white rounded-xl py-5 w-20 lg:w-[250px]'>
+        <div className='bg-white rounded-xl py-5 w-20 lg:w-[250px] max-h-[500px]'>
             <div className='flex justify-center p-4'>
                 {/* <Logo /> */}
                 {/* <Link to={'/admin'}>
