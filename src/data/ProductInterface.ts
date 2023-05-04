@@ -16,3 +16,14 @@ export interface ProductCollectionPage {
     sortBy: string;
     sortDir: SortOrderType;
 }
+
+export interface ProductColorDTO {
+    colorName: string;
+    colorValue: string;
+}
+
+export interface ProductSizeDTO {
+    sizeName: string;
+    weight: string;
+    height: string;
+}
