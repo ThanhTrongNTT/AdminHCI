@@ -1,11 +1,10 @@
 import { Button } from 'flowbite-react';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 import WrapperField from '~/components/common/WrapperField';
 import InputDefault from '~/components/input/InputDefault';
-import Input from '~/components/input/Input';
 import { className } from '~/utils/className';
-import { toast } from 'react-toastify';
 
 type NewProductProps = {
     onSubmit: ({ fullName, address, ...values }: any) => void;
@@ -18,11 +17,6 @@ const NewProduct = ({ onSubmit, onCancel }: NewProductProps) => {
     const [images, setImages] = useState<Array<string>>([]);
     const handleChange = (e: any) => {
         console.log(e.target.files[0]);
-        // for (let i = 0; i < e.target.files.length; i++) {
-        //     const newImage = e.target.files[i];
-        //     newImage['id'] = Math.random();
-        //     setImages((images) => [...images, newImage]);
-        // }
     };
     const uploadFirebase = () => {
         toast.success('Quá đã Pepsi ơi!');
@@ -57,7 +51,7 @@ const NewProduct = ({ onSubmit, onCancel }: NewProductProps) => {
                                     Product Name:
                                 </label>
                                 <InputDefault
-                                    placeholder='Enter Full Name'
+                                    placeholder='Enter Product Name'
                                     control={control}
                                     name='productName'
                                     className='col-span-3'
@@ -68,7 +62,7 @@ const NewProduct = ({ onSubmit, onCancel }: NewProductProps) => {
                                     Title:
                                 </label>
                                 <InputDefault
-                                    placeholder='Enter Address'
+                                    placeholder='Enter Title'
                                     control={control}
                                     name='title'
                                     className='col-span-3'
@@ -79,7 +73,7 @@ const NewProduct = ({ onSubmit, onCancel }: NewProductProps) => {
                                     Subtitle:
                                 </label>
                                 <InputDefault
-                                    placeholder='Enter Address'
+                                    placeholder='Enter Subtitle'
                                     control={control}
                                     name='subtitle'
                                     className='col-span-3'
@@ -91,7 +85,9 @@ const NewProduct = ({ onSubmit, onCancel }: NewProductProps) => {
                                     onChange={handleChange}
                                     className='w-2/4 px-4 py-2 rounded-lg border border-c6'
                                 />
-                                <button
+                                <Button
+                                    outline={false}
+                                    isProcessing={true}
                                     type='button'
                                     onClick={uploadFirebase}
                                     className={className(
@@ -108,7 +104,7 @@ const NewProduct = ({ onSubmit, onCancel }: NewProductProps) => {
                                             <div className='w-7 h-7 bg-transparent border-[3px] border-t-[3px] border-t-transparent animate-spin border-white rounded-full'></div>
                                         </div>
                                     )}
-                                </button>
+                                </Button>
                             </div>
                         </div>
                         <div className='flex justify-center gap-4 p-5'>

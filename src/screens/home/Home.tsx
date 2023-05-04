@@ -1,3 +1,4 @@
+import CardUser from '~/components/card/CardUser';
 import { IconClient, IconGlobalUser, IconMoney, IconSale } from '~/components/icon/Icon';
 import Widget from '~/components/widget/Widget';
 
@@ -23,6 +24,15 @@ const Home = () => {
                             icon={widget.icon}
                         />
                     ))}
+                </div>
+                <div className='flex flex-wrap items-center justify-center'>
+                    <CardUser />
+                    <CardUser />
+                    <CardUser />
+                    <CardUser />
+                    <CardUser />
+                    <CardUser />
+                    <CardUser />
                 </div>
             </div>
         </>
