@@ -155,7 +155,7 @@ const productSizeApi = {
         return AxiosClient.delete(url);
     },
 };
-export default {
+export {
     productApi,
     subProductApi,
     productCollectionApi,

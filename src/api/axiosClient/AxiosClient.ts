@@ -4,7 +4,6 @@ import { toast } from 'react-toastify';
 // Set up default config for http requests here
 
 // Please have a look at here `https://github.com/axios/axios#request-config` for the full list of configs
-
 const AxiosClient = axios.create({
     baseURL: process.env.REACT_APP_API_URL,
     // baseURL: 'http://localhost:8081/api/v1/',
@@ -18,6 +17,8 @@ AxiosClient.interceptors.request.use(async (config: AxiosRequestConfig) => {
     // UPDATE: Add this code to show global loading indicator
     document.body.classList.add('loading-indicator');
     const accessToken = await sessionStorage.getItem('accessToken');
+    console.log('accessToken', accessToken);
+
     if (accessToken)
         config.headers = {
             ...config.headers,
@@ -37,6 +38,9 @@ AxiosClient.interceptors.response.use(
         return response;
     },
     async (error) => {
+        // spinning hide
+        // UPDATE: Add this code to hide global loading indicator
+        document.body.classList.remove('loading-indicator');
         console.log(error);
         if (!error.response.data) {
             toast.error(error.message, {

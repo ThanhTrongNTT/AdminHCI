@@ -17,10 +17,14 @@ function DeclareRouter() {
                 <Route path='/admin' element={<PrivateRoute />}>
                     <Route element={<LayoutDefault />}>
                         <Route path='' element={<Home />} />
-                        <Route path='users' element={<ListUser />} />
-                        <Route path='products' element={<ListProduct />} />
-                        <Route path='orders' element={<ListOrder />} />
-                        <Route path='coupons' />
+                        <Route path='user' element={<ListUser />} />
+                        <Route path='product' element={<ListProduct />} />
+                        <Route path='product-color' element={<ListProduct />} />
+                        <Route path='product-size' element={<ListProduct />} />
+                        <Route path='product-collection' element={<ListProduct />} />
+                        <Route path='product-category' element={<ListProduct />} />
+                        <Route path='order' element={<ListOrder />} />
+                        <Route path='coupon' />
                     </Route>
                 </Route>
             </Routes>

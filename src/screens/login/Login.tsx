@@ -1,26 +1,42 @@
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import authApi from '~/api/auth.api';
+import { productColorApi } from '~/api/product.api';
 import FormGroup from '~/components/common/FormGroup';
 import { IconUser } from '~/components/icon/Icon';
 import Input from '~/components/input/Input';
 import TogglePassword from '~/components/toogle/TogglePassword';
 import useToggleValue from '~/hooks/useToggleValue';
+import jwtDecode from 'jwt-decode';
+import { toast } from 'react-toastify';
 
 const Login = () => {
-    // const [email, setEmail] = useState('');
-    // const [password, setPassword] = useState('');
-    // const loginHandler = async (values: any) => {
-    //     const { email, password } = values;
-    // };
+    const navigate = useNavigate();
+    const loginHandler = async (values: any) => {
+        const { email, password } = values;
+        authApi.login({ email, password }).then((res: any) => {
+            console.log('res: ', res);
+            if (res) {
+                const accessToken = res.result.access;
+                let decode: any = jwtDecode(accessToken);
+                if (decode.role === 'ADMIN') {
+                    sessionStorage.setItem('accessToken', res.result.access);
+                    sessionStorage.setItem('refreshToken', res.result.refresh);
+                    sessionStorage.setItem('admin', 'true');
+                    toast.success(`Login successfully!`);
+                    navigate('/');
+                } else {
+                    toast.error(`You don't have permission to access!`);
+                }
+            }
+        });
+    };
 
     const { value: showPassword, handleToggleValue: handleTogglePassword } = useToggleValue();
     const {
-        // handleSubmit,
+        handleSubmit,
         control,
-        formState: {
-            errors,
-            // isValid, isSubmitting
-        },
+        formState: { errors, isValid, isSubmitting },
     } = useForm({
         mode: 'onSubmit',
     });
@@ -31,10 +47,7 @@ const Login = () => {
                 <Link to={'/admin'}>
                     <h1 className='text-black text-3xl font-bold'>Palmo Clothes</h1>
                 </Link>
-                <form
-                    className='text-center w-full'
-                    // onSubmit={handleSubmit(loginHandler)}
-                >
+                <form className='text-center w-full' onSubmit={handleSubmit(loginHandler)}>
                     <div className='flex flex-col'>
                         <FormGroup>
                             <label
@@ -83,9 +96,6 @@ const Login = () => {
                         Đăng nhập
                     </button>
                 </form>
-                {/* <Link to={'/forgot'}>
-                    <span className='text-lg font-semibold text-center my-5'>Quên mật khẩu ?</span>
-                </Link> */}
                 <span className='text-sm font-thin text-center pt-2'>
                     Việc bạn tiếp tục sử dụng trang web này đồng nghĩa bạn đồng ý với{' '}
                     <Link to={'/home'}>

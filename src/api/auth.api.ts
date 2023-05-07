@@ -16,7 +16,7 @@ const authApi = {
     },
     login: (data: LoginDTO) => {
         const url = 'auth/log-in';
-        return AxiosClient.post(url, { data });
+        return AxiosClient.post(url, data);
     },
     confirmEmail: (data: ConfirmEmailDTO) => {
         const url = 'auth/confirm-email';
