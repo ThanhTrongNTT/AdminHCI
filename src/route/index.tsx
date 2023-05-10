@@ -6,6 +6,10 @@ import ListProduct from '~/screens/list/ListProduct';
 import ListUser from '~/screens/list/ListUser';
 import Login from '~/screens/login/Login';
 import PrivateRoute from './privateRoute/PrivateRoute';
+import ListProductColor from '~/screens/list/ListProductColor';
+import ListProductSize from '~/screens/list/ListProductSize';
+import ListProductCollection from '~/screens/list/ListProductCollection';
+import ListProductCategory from '~/screens/list/ListProductCategory';
 
 function DeclareRouter() {
     return (
@@ -19,10 +23,10 @@ function DeclareRouter() {
                         <Route path='' element={<Home />} />
                         <Route path='user' element={<ListUser />} />
                         <Route path='product' element={<ListProduct />} />
-                        <Route path='product-color' element={<ListProduct />} />
-                        <Route path='product-size' element={<ListProduct />} />
-                        <Route path='product-collection' element={<ListProduct />} />
-                        <Route path='product-category' element={<ListProduct />} />
+                        <Route path='product-color' element={<ListProductColor />} />
+                        <Route path='product-size' element={<ListProductSize />} />
+                        <Route path='product-collection' element={<ListProductCollection />} />
+                        <Route path='product-category' element={<ListProductCategory />} />
                         <Route path='order' element={<ListOrder />} />
                         <Route path='coupon' />
                     </Route>

@@ -11,27 +11,37 @@ import {
 const Sidebar = () => {
     const menus = [
         { title: 'Dashboard', link: '/admin' },
-        { title: 'Users', link: 'users', icon: <IconUser /> },
+        { title: 'User', link: 'user', icon: <IconUser /> },
         {
             title: 'Product',
-            link: 'products',
+            link: 'product',
             icon: <IconCategory />,
         },
         {
             title: 'Product Color',
-            link: 'productColors',
+            link: 'product-color',
             icon: <IconCategory />,
         },
         {
             title: 'Product Size',
-            link: 'productSizes',
+            link: 'product-size',
             icon: <IconCategory />,
         },
-        { title: 'Orders', link: 'orders', icon: <IconCart /> },
-        { title: 'Coupons', link: 'coupons', icon: <IconCourse /> },
+        {
+            title: 'Product Collection',
+            link: 'product-collection',
+            icon: <IconCategory />,
+        },
+        {
+            title: 'Product Category',
+            link: 'product-category',
+            icon: <IconCategory />,
+        },
+        { title: 'Order', link: 'order', icon: <IconCart /> },
+        { title: 'Coupon', link: 'coupon', icon: <IconCourse /> },
     ];
     return (
-        <div className='bg-white rounded-xl py-5 w-20 lg:w-[250px] max-h-[500px]'>
+        <div className='bg-white rounded-xl py-5 w-20 lg:w-[250px] h-full'>
             <div className='flex justify-center p-4'>
                 {/* <Logo /> */}
                 {/* <Link to={'/admin'}>

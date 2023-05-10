@@ -7,20 +7,12 @@ const Navbar = () => {
         <>
             <div className='flex h-8 bg-transparent mt-3 justify-end'>
                 <div className='flex'>
-                    <div className='flex bg-white rounded-lg px-3 items-center'>
+                    {/* <div className='flex bg-white rounded-lg px-3 items-center'>
                         <span className='cursor-pointer px-2'>
                             <IconSearch />
                         </span>
                         <input type='text' className='outline-none' />
-                    </div>
-                    {
-                        <Link to={'/login'} className='flex items-center p-2 cursor-pointer'>
-                            <span>
-                                <IconSignIn />
-                            </span>
-                            <span className='text-white p-1.5'>Sign-in</span>
-                        </Link>
-                    }
+                    </div> */}
                     <div className='flex items-center mx-5'>
                         <div className='flex items-center gap-2'>
                             <div className='flex items-center'>
