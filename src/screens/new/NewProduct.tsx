@@ -59,12 +59,12 @@ const NewProduct = ({ onSubmit, onCancel }: NewProductProps) => {
                             </WrapperField>
                             <WrapperField>
                                 <label htmlFor='' className='font-bold flex-1 text-left col-span-1'>
-                                    Title:
+                                    Description:
                                 </label>
                                 <InputDefault
-                                    placeholder='Enter Title'
+                                    placeholder='Enter Description'
                                     control={control}
-                                    name='title'
+                                    name='description'
                                     className='col-span-3'
                                 />
                             </WrapperField>

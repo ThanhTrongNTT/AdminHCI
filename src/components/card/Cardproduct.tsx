@@ -1,16 +1,15 @@
-import { Avatar, Button, Modal } from 'flowbite-react';
-import { useState } from 'react';
-import { EditEmployeeDTO } from '~/data/UserInterface';
+import { Button, Modal } from 'flowbite-react';
+import React, { useState } from 'react';
 import NewProduct from '~/screens/new/NewProduct';
 
-const CardUser = (user: EditEmployeeDTO) => {
+const Cardproduct = () => {
     const [modalDelete, setModalDelete] = useState(false);
-    const [modalEdit, setModalEdit] = useState(false);
-    const onCloseEdit = () => {
-        setModalEdit(!modalEdit);
+    const [modalUpdate, setModalUpdate] = useState(false);
+    const onCloseUpdate = () => {
+        setModalUpdate(!modalUpdate);
     };
-    const onSubmitEdit = () => {
-        setModalEdit(!modalEdit);
+    const onSubmitUpdate = () => {
+        setModalUpdate(!modalUpdate);
     };
     const onDelete = () => {
         setModalDelete(!modalDelete);
@@ -20,10 +19,16 @@ const CardUser = (user: EditEmployeeDTO) => {
     };
     return (
         <>
-            <Modal show={modalEdit} size='7xl' position='center' popup={true} onClose={onCloseEdit}>
+            <Modal
+                show={modalUpdate}
+                size='7xl'
+                position='center'
+                popup={true}
+                onClose={onCloseUpdate}
+            >
                 <Modal.Header className='bg-white' />
                 <Modal.Body className='bg-white'>
-                    <NewProduct onCancel={onCloseEdit} onSubmit={onCloseEdit} />
+                    <NewProduct onCancel={onCloseUpdate} onSubmit={onCloseUpdate} />
                 </Modal.Body>
             </Modal>
             <Modal
@@ -58,33 +63,26 @@ const CardUser = (user: EditEmployeeDTO) => {
                     </>
                 </Modal.Body>
             </Modal>
-            <div className='w-[300px] h-[450px] shadow-xl bg-white m-2 rounded-2xl'>
+            <div className='w-[300px] shadow-xl bg-white m-2 rounded-2xl'>
                 <div>
                     <img
-                        className='h-[120px] w-full rounded-t-2xl'
+                        className='h-[300px] w-full rounded-t-2xl'
                         src='https://images.unsplash.com/photo-1612865547334-09cb8cb455da?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80'
                         alt=''
                     />
                 </div>
-                <div className='py-4 px-6 mt-[-55px]'>
-                    <Avatar
-                        size={'lg'}
-                        img='https://flowbite.com/docs/images/people/profile-picture-5.jpg'
-                        rounded={true}
-                    />
-                </div>
-                <div className='flex flex-col items-center'>
-                    <p className='bg-gray-c3 rounded-2xl px-2'>ID: 1</p>
-                    <p className='text-black font-semibold text-lg'>
-                        Email: ntt.thanhtrong@gmail.com
-                    </p>
-                    <p className=''>User Name: Thanh Trong</p>
-                    <p className=''>Address: 93 Ben Chuong Duong</p>
-                    <p className=''>Phone Number: +8482782365273</p>
-                    <p className=''>Gender: Male</p>
+                <div className='flex flex-col mt-3'>
+                    <p className='bg-gray-c3 rounded-2xl px-2 mx-auto'>ID: 1</p>
+                    <div className='ml-5'>
+                        <p className='text-black font-semibold text-lg'>Product Name: Ao thun</p>
+                        <p className=''>Title: Thanh Trong</p>
+                        <p className=''>Subtitle: 93 Ben Chuong Duong</p>
+                        <p className=''>Size: +8482782365273</p>
+                        <p className=''>Color: Male</p>
+                    </div>
                 </div>
                 <div className='flex justify-center items-center py-4 mt-3'>
-                    <Button color='light' className='mx-2' outline={false} onClick={onCloseEdit}>
+                    <Button color='light' className='mx-2' outline={false} onClick={onCloseUpdate}>
                         Update
                     </Button>
                     <Button
@@ -101,4 +99,4 @@ const CardUser = (user: EditEmployeeDTO) => {
     );
 };
 
-export default CardUser;
+export default Cardproduct;

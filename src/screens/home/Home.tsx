@@ -25,15 +25,6 @@ const Home = () => {
                         />
                     ))}
                 </div>
-                <div className='flex flex-wrap items-center justify-center'>
-                    <CardUser />
-                    <CardUser />
-                    <CardUser />
-                    <CardUser />
-                    <CardUser />
-                    <CardUser />
-                    <CardUser />
-                </div>
             </div>
         </>
     );
