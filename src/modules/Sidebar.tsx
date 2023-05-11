@@ -18,16 +18,6 @@ const Sidebar = () => {
             icon: <IconCategory />,
         },
         {
-            title: 'Product Color',
-            link: 'product-color',
-            icon: <IconCategory />,
-        },
-        {
-            title: 'Product Size',
-            link: 'product-size',
-            icon: <IconCategory />,
-        },
-        {
             title: 'Product Collection',
             link: 'product-collection',
             icon: <IconCategory />,
@@ -35,6 +25,16 @@ const Sidebar = () => {
         {
             title: 'Product Category',
             link: 'product-category',
+            icon: <IconCategory />,
+        },
+        {
+            title: 'Product Color',
+            link: 'product-color',
+            icon: <IconCategory />,
+        },
+        {
+            title: 'Product Size',
+            link: 'product-size',
             icon: <IconCategory />,
         },
         { title: 'Order', link: 'order', icon: <IconCart /> },
