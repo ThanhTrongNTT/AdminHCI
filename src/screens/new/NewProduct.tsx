@@ -3,6 +3,8 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import WrapperField from '~/components/common/WrapperField';
+import Dropdown from '~/components/dropdown/Dropdown';
+import Field from '~/components/field/Field';
 import InputDefault from '~/components/input/InputDefault';
 import { className } from '~/utils/className';
 
@@ -15,6 +17,7 @@ const NewProduct = ({ onSubmit, onCancel }: NewProductProps) => {
     const [disable, setDisable] = useState<boolean>(true);
     const [upload, setUpload] = useState<boolean>(true);
     const [images, setImages] = useState<Array<string>>([]);
+    const [style, setStyle] = useState([]);
     const handleChange = (e: any) => {
         console.log(e.target.files[0]);
     };
@@ -24,7 +27,7 @@ const NewProduct = ({ onSubmit, onCancel }: NewProductProps) => {
     const {
         handleSubmit,
         control,
-        // setValue,
+        setValue,
         reset,
         // formState: { isSubmitSuccessful },
     } = useForm();
@@ -68,9 +71,59 @@ const NewProduct = ({ onSubmit, onCancel }: NewProductProps) => {
                                     className='col-span-3'
                                 />
                             </WrapperField>
+                            <div className='flex gap-5'>
+                                <div className='flex flex-col'>
+                                    <label
+                                        htmlFor=''
+                                        className='font-bold flex-1 text-left col-span-1'
+                                    >
+                                        Style:
+                                    </label>
+                                    <Dropdown
+                                        control={control}
+                                        setValue={setValue}
+                                        dropdownLabel='Select Style'
+                                        name='style'
+                                        list={style}
+                                        className={'col-span-3'}
+                                    />
+                                </div>
+                                <div className='flex flex-col flex-1'>
+                                    <label
+                                        htmlFor=''
+                                        className='font-bold flex-1 text-left col-span-1'
+                                    >
+                                        Category:
+                                    </label>
+                                    <Dropdown
+                                        control={control}
+                                        setValue={setValue}
+                                        dropdownLabel='Select Category'
+                                        name='category'
+                                        list={style}
+                                        className={'col-span-3'}
+                                    />
+                                </div>
+                                <div className='flex flex-col flex-1'>
+                                    <label
+                                        htmlFor=''
+                                        className='font-bold flex-1 text-left col-span-1'
+                                    >
+                                        Collection:
+                                    </label>
+                                    <Dropdown
+                                        control={control}
+                                        setValue={setValue}
+                                        dropdownLabel='Select Collection'
+                                        name='collection'
+                                        list={style}
+                                        className={'col-span-3'}
+                                    />
+                                </div>
+                            </div>
                             <WrapperField>
                                 <label htmlFor='' className='font-bold flex-1 text-left col-span-1'>
-                                    Subtitle:
+                                    Sub Product:
                                 </label>
                                 <InputDefault
                                     placeholder='Enter Subtitle'
