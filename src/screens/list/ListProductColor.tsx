@@ -10,6 +10,11 @@ const ListProductColor = () => {
     const onCloseNew = () => {
         setModalNew(!modalNew);
     };
+    const newColorHandler = (values: any) => {
+        console.log(values);
+        setModalNew(!modalNew);
+    };
+    const onCloseEdit = () => {};
     const color = '#03417F';
     return (
         <>
@@ -23,7 +28,7 @@ const ListProductColor = () => {
                 >
                     <Modal.Header className='bg-white' />
                     <Modal.Body className='bg-white'>
-                        <NewProductColor onSubmit={() => {}} onCancel={onCloseNew} />
+                        <NewProductColor onSubmit={newColorHandler} onCancel={onCloseNew} />
                     </Modal.Body>
                 </Modal>
             </div>

@@ -8,6 +8,10 @@ const ListProductSize = () => {
     const onCloseNew = () => {
         setModalNew(!modalNew);
     };
+    const onSubmitNew = (values: any) => {
+        console.log(values);
+        setModalNew(!modalNew);
+    };
     return (
         <>
             <div>
@@ -20,7 +24,7 @@ const ListProductSize = () => {
                 >
                     <Modal.Header className='bg-white' />
                     <Modal.Body className='bg-white'>
-                        <NewProductSize onSubmit={() => {}} onCancel={onCloseNew} />
+                        <NewProductSize onSubmit={onSubmitNew} onCancel={onCloseNew} />
                     </Modal.Body>
                 </Modal>
             </div>
