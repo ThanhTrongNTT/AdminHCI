@@ -1,6 +1,6 @@
 export interface PageDTO {
-    order: [];
-    filter: [];
+    orders: any[];
+    filter: any[];
     size: number;
     totalElement: number;
     pageNumber: number;

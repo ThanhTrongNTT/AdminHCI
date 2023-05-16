@@ -13,7 +13,7 @@ import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useEffect } from 'react';
 
-const schame = Yup.object({
+const schema = Yup.object({
     email: Yup.string()
         .required('Please enter your emaill address!')
         .matches(
@@ -54,7 +54,7 @@ const Login = () => {
         control,
         formState: { errors, isValid, isSubmitting },
     } = useForm({
-        resolver: yupResolver(schame),
+        resolver: yupResolver(schema),
         mode: 'onSubmit',
     });
     useEffect(() => {

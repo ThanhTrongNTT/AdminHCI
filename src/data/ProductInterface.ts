@@ -16,7 +16,7 @@ export interface SubProductDTO {
     sizeId: number;
     price: number;
     quantity: number;
-    meidas: [];
+    meidas: MediaDTO[];
 }
 export interface ProductCollectionDTO {
     name: string;
