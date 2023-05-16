@@ -14,10 +14,8 @@ const AxiosClient = axios.create({
 AxiosClient.interceptors.request.use(async (config: AxiosRequestConfig) => {
     // spinning start to show
     // UPDATE: Add this code to show global loading indicator
-    document.body.classList.add('loading-indicator');
+    // document.body.classList.add('loading-indicator');
     const accessToken = await sessionStorage.getItem('accessToken');
-    console.log('accessToken', accessToken);
-
     if (accessToken)
         config.headers = {
             ...config.headers,
@@ -30,7 +28,7 @@ AxiosClient.interceptors.response.use(
     async (response) => {
         // spinning hide
         // UPDATE: Add this code to hide global loading indicator
-        document.body.classList.remove('loading-indicator');
+        // document.body.classList.remove('loading-indicator');
         if (response && response.data) {
             return response.data;
         }

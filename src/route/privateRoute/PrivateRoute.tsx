@@ -7,8 +7,8 @@ const useAuth = () => {
 };
 
 const PrivateRoute = (children: any) => {
-    // const isAuth = useAuth();
-    const isAuth = true;
+    const isAuth = useAuth();
+    // const isAuth = true;
     return isAuth ? <Outlet /> : <Navigate to={'/login'} />;
 };
 

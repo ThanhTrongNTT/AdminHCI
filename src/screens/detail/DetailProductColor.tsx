@@ -1,36 +1,39 @@
-import { Button } from 'flowbite-react';
 import React, { useEffect, useState } from 'react';
+import * as Yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { toast } from 'react-toastify';
 import { useForm } from 'react-hook-form';
 import WrapperField from '~/components/common/WrapperField';
 import InputDefault from '~/components/input/InputDefault';
 import { SketchPicker } from 'react-color';
-import * as Yup from 'yup';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { toast } from 'react-toastify';
+import { Button } from 'flowbite-react';
 
 const schema = Yup.object({
     colorName: Yup.string().required('Please enter your Color Name!'),
 });
 
-type NewProductColorProps = {
+type UpdateProductColorProps = {
     onSubmit: (values: any) => void;
     onCancel: () => void;
+    color: any;
 };
 
-const NewProductColor = ({ onSubmit, onCancel }: NewProductColorProps) => {
-    const [colorValue, setColorValue] = useState('#ffffff');
+const DetailProductColor = ({ onSubmit, onCancel, color }: UpdateProductColorProps) => {
+    const [colorValue, setColorValue] = useState(color.colorValue);
     const [state, setState] = useState({
-        background: '#ffffff',
+        background: color.colorValue,
     });
+    const [colorName, setColorName] = useState(color.colorName);
 
-    const handleChangeComplete = (color: any) => {
-        setState({ background: color.hex });
-        setColorValue(color.hex);
+    const handleChangeComplete = (colorValue: any) => {
+        setState({ background: colorValue.hex });
+        setColorValue(colorValue.hex);
     };
     const {
         handleSubmit,
         control,
         reset,
+        setValue,
         formState: { errors },
     } = useForm({ resolver: yupResolver(schema), mode: 'onSubmit' });
     const resetForm = () => {
@@ -38,7 +41,7 @@ const NewProductColor = ({ onSubmit, onCancel }: NewProductColorProps) => {
             colorName: '',
         });
     };
-    const newColorHandler = (values: any) => {
+    const updateColorHandler = (values: any) => {
         values.colorValue = colorValue;
         onSubmit(values);
         resetForm();
@@ -59,12 +62,18 @@ const NewProductColor = ({ onSubmit, onCancel }: NewProductColorProps) => {
             }
         }
     }, [errors]);
+    useEffect(() => {
+        setValue('colorName', colorName);
+    }, []);
+
     return (
         <>
             <div className='p-2'>
-                <h1 className='font-bold text-3xl mb-7 text-center'>Create New Product Color</h1>
+                <h1 className='font-bold text-3xl mb-7 text-center'>
+                    Update Product Color {color.colorName}
+                </h1>
                 <div className='w-full p-2 bg-white rounded-xl overflow-y-auto h-[450px]'>
-                    <form onSubmit={handleSubmit(newColorHandler)}>
+                    <form onSubmit={handleSubmit(updateColorHandler)}>
                         <div className='flex flex-col gap-4'>
                             <WrapperField>
                                 <label htmlFor='' className='font-bold text-left'>
@@ -109,4 +118,4 @@ const NewProductColor = ({ onSubmit, onCancel }: NewProductColorProps) => {
     );
 };
 
-export default NewProductColor;
+export default DetailProductColor;

@@ -121,19 +121,19 @@ const productSaleApi = {
 };
 const productColorApi = {
     getAllProductColor: (data: PageDTO) => {
-        const url = 'product/color';
+        const url = '/product/color';
         return AxiosClient.post(url, data);
     },
     createProductColor: (data: ProductColorDTO) => {
         const url = '/product/color/create';
         return AxiosClient.post(url, data);
     },
-    updateProductColor: (id: string, data: ProductColorDTO) => {
-        const url = `product/color/${id}/update`;
+    updateProductColor: (id: number, data: ProductColorDTO) => {
+        const url = `/product/color/${id}/update`;
         return AxiosClient.put(url, data);
     },
-    deleteProductColor: (id: string) => {
-        const url = `product/color/${id}`;
+    deleteProductColor: (id: number) => {
+        const url = `/product/color/${id}`;
         return AxiosClient.delete(url);
     },
 };
