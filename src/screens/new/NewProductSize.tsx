@@ -7,10 +7,10 @@ import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { toast } from 'react-toastify';
 
-const schame = Yup.object({
+const schema = Yup.object({
     sizeName: Yup.string().required('Please enter your Size Name!').max(4),
-    heightValue: Yup.string().required('Please enter your Height Value!'),
-    weightValue: Yup.string().required('Please enter your Weight Value!'),
+    height: Yup.string().required('Please enter your Height Value!'),
+    weight: Yup.string().required('Please enter your Weight Value!'),
 });
 
 type NewProductSizeProps = {
@@ -24,12 +24,12 @@ const NewProductSize = ({ onSubmit, onCancel }: NewProductSizeProps) => {
         // setValue,
         reset,
         formState: { errors },
-    } = useForm({ resolver: yupResolver(schame), mode: 'onSubmit' });
+    } = useForm({ resolver: yupResolver(schema), mode: 'onSubmit' });
     const resetForm = () => {
         reset({
             sizeName: '',
-            heightValue: '',
-            weightValue: '',
+            height: '',
+            weight: '',
         });
     };
     const newSizeHandler = (values: any) => {
@@ -76,7 +76,7 @@ const NewProductSize = ({ onSubmit, onCancel }: NewProductSizeProps) => {
                                 <InputDefault
                                     placeholder='Enter Height Value'
                                     control={control}
-                                    name='heightValue'
+                                    name='height'
                                     className='col-span-3'
                                 />
                             </WrapperField>
@@ -87,7 +87,7 @@ const NewProductSize = ({ onSubmit, onCancel }: NewProductSizeProps) => {
                                 <InputDefault
                                     placeholder='Enter Weight Value'
                                     control={control}
-                                    name='weightValue'
+                                    name='weight'
                                     className='col-span-3'
                                 />
                             </WrapperField>

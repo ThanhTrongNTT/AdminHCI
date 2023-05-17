@@ -11,6 +11,11 @@
         background: var(--cl-primary);
         background-attachment: fixed;
     }
+    button,
+    input,
+    select {
+        outline: none;
+    }
 }
 
 /* Loading CSS */

@@ -1,13 +1,12 @@
 import { Button, Modal, Pagination } from 'flowbite-react';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
+import { productColorApi } from '~/api/product.api';
 import { IconPlus } from '~/components/icon/Icon';
-import NewProductColor from '../new/NewProductColor';
 import { isLightColor } from '~/utils/Color';
 import { className } from '~/utils/className';
-import { productApi, productColorApi } from '~/api/product.api';
-import { error } from 'console';
-import { toast } from 'react-toastify';
 import DetailProductColor from '../detail/DetailProductColor';
+import NewProductColor from '../new/NewProductColor';
 
 const ListProductColor = () => {
     const [modalNew, setModalNew] = useState(false);
@@ -44,6 +43,7 @@ const ListProductColor = () => {
         setModalNew(!modalNew);
     };
     const newColorHandler = (values: any) => {
+        //* Excute Logic create new Color
         productColorApi.createProductColor(values).then((res: any) => {
             if (res.result) {
                 toast.success(`Create Color ${res.result.colorName} success!`);
@@ -91,7 +91,6 @@ const ListProductColor = () => {
         }
         setModalDelete(!modalDelete);
     };
-    const color = '#03417F';
     useEffect(() => {
         getAllColor(pageNumber);
     }, []);

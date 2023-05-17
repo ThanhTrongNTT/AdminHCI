@@ -32,6 +32,10 @@ const productApi = {
         const url = `product/${id}`;
         return AxiosClient.delete(url);
     },
+    setPublicProduct: (id: string) => {
+        const url = '';
+        return AxiosClient.post(url);
+    },
 };
 const subProductApi = {
     createSubProduct: (productId: string, data: SubProductDTO) => {
@@ -66,8 +70,8 @@ const productCollectionApi = {
     },
 };
 const productStyleApi = {
-    getAllProductSize: (data: PageDTO) => {
-        const url = 'product/size';
+    getAllProductStyle: (data: PageDTO) => {
+        const url = 'product/style';
         return AxiosClient.post(url, data);
     },
     createProductStyle: (data: ProductStyleDTO) => {
@@ -146,11 +150,11 @@ const productSizeApi = {
         const url = 'product/size/create';
         return AxiosClient.post(url, data);
     },
-    updateProductSize: (id: string, data: ProductSizeDTO) => {
+    updateProductSize: (id: number, data: ProductSizeDTO) => {
         const url = `product/size/${id}/update`;
         return AxiosClient.put(url, data);
     },
-    deleteProductSize: (id: string) => {
+    deleteProductSize: (id: number) => {
         const url = `product/size/${id}`;
         return AxiosClient.delete(url);
     },
