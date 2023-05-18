@@ -90,11 +90,8 @@ const CardStyle = ({ onHandleDelete, onHandleSubmitUpdate, selectedStyle }: Card
                     alt=''
                 />
                 <div className='flex flex-col mt-3'>
-                    <p className='bg-gray-c3 rounded-2xl px-2 mx-auto text-center'>
-                        ID: {selectedStyle.id}
-                    </p>
                     <div className='px-5'>
-                        <p className='text-black font-semibold text-lg'>
+                        <p className='text-black font-semibold text-lg h-[56px]'>
                             Style Name: {selectedStyle.name}
                         </p>
                         <span className=''>
@@ -110,9 +107,6 @@ const CardStyle = ({ onHandleDelete, onHandleSubmitUpdate, selectedStyle }: Card
                                 {shortenText(selectedStyle?.subTitle, MAX_LENGTH)}
                             </p>
                         </span>
-                        <p className=''>
-                            Deleted: {selectedStyle.isDelete.toString().toUpperCase()}
-                        </p>
                     </div>
                 </div>
                 <div className='flex justify-center items-center py-4 mt-3 flex-col'>

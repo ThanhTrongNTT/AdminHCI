@@ -1,6 +1,7 @@
 import { Avatar, Button, Modal } from 'flowbite-react';
 import { useState } from 'react';
 import { EditEmployeeDTO } from '~/data/UserInterface';
+import DetailUser from '~/screens/detail/DetailUser';
 import NewProduct from '~/screens/new/NewProduct';
 
 const CardUser = (user: EditEmployeeDTO) => {
@@ -23,7 +24,7 @@ const CardUser = (user: EditEmployeeDTO) => {
             <Modal show={modalEdit} size='7xl' position='center' popup={true} onClose={onCloseEdit}>
                 <Modal.Header className='bg-white' />
                 <Modal.Body className='bg-white'>
-                    <NewProduct onCancel={onCloseEdit} onSubmit={onCloseEdit} />
+                    <DetailUser />
                 </Modal.Body>
             </Modal>
             <Modal

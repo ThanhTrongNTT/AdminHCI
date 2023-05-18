@@ -120,7 +120,7 @@ const NewProductCollection = ({ onSubmit, onCancel }: NewProductCollectionProps)
                                     Collection Name:
                                 </label>
                                 <InputDefault
-                                    placeholder='Enter Product Name'
+                                    placeholder='Enter Collection Name'
                                     control={control}
                                     name='name'
                                     className='col-span-3'
@@ -131,7 +131,7 @@ const NewProductCollection = ({ onSubmit, onCancel }: NewProductCollectionProps)
                                     Title:
                                 </label>
                                 <InputDefault
-                                    placeholder='Enter Product Name'
+                                    placeholder='Enter Title'
                                     control={control}
                                     name='title'
                                     className='col-span-3'
@@ -142,7 +142,7 @@ const NewProductCollection = ({ onSubmit, onCancel }: NewProductCollectionProps)
                                     Subtitle:
                                 </label>
                                 <InputDefault
-                                    placeholder='Enter Product Name'
+                                    placeholder='Enter Subtitle'
                                     control={control}
                                     name='subTitle'
                                     className='col-span-3'

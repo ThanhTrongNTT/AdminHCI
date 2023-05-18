@@ -92,13 +92,10 @@ const Cardproduct = ({ onHandleDelete, onHandleSubmitUpdate, product }: CardProd
                     </>
                 </Modal.Body>
             </Modal>
-            <div className='w-[320px] shadow-xl bg-white m-2 rounded-2xl'>
+            <div className='w-[320px] h-[450px] shadow-xl bg-white m-2 rounded-2xl'>
                 <div className='flex flex-col mt-3 px-2'>
-                    <p className='bg-gray-c3 rounded-2xl px-2 mx-auto text-center'>
-                        ID: {product.id}
-                    </p>
                     <div className='ml-5'>
-                        <p className='text-black font-semibold text-lg'>
+                        <p className='text-black font-semibold text-lg h-[56px]'>
                             Product Name: {product.name}
                         </p>
                         <p className=''>Description: {product.description}</p>
@@ -107,7 +104,6 @@ const Cardproduct = ({ onHandleDelete, onHandleSubmitUpdate, product }: CardProd
                         <p className=''>Collection: {product.collection.name}</p>
                         <p className=''>Category: {product.category.name}</p>
                         <p className=''>Style: {product.style.name}</p>
-                        <p className=''>Deleted: {product.isDelete}</p>
                         <span className='flex items-center'>
                             <p>Subproduct:</p>
                             {product.items.length === 0 ? (

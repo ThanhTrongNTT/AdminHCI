@@ -170,9 +170,6 @@ const ListProductColor = () => {
                                 Color Value
                             </th>
                             <th scope='col' className='px-6'>
-                                Deleted
-                            </th>
-                            <th scope='col' className='px-6'>
                                 Action
                             </th>
                         </tr>
@@ -201,15 +198,6 @@ const ListProductColor = () => {
                                     >
                                         {color.colorValue}
                                     </span>
-                                </th>
-                                <th
-                                    scope='row'
-                                    className={className(
-                                        'py-4 px-6 font-medium whitespace-nowrap',
-                                        color.isDelete ? 'text-success' : ' text-warning',
-                                    )}
-                                >
-                                    {color.isDelete.toString().toUpperCase()}
                                 </th>
                                 <th
                                     scope='row'

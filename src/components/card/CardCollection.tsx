@@ -98,11 +98,8 @@ const CardCollection = ({
                     alt=''
                 />
                 <div className='flex flex-col mt-3'>
-                    <p className='bg-gray-c3 rounded-2xl px-2 mx-auto text-center'>
-                        ID: {selectedCollection.id}
-                    </p>
                     <div className='px-5'>
-                        <p className='text-black font-semibold text-lg'>
+                        <p className='text-black font-semibold text-lg h-[56px]'>
                             Collection Name: {selectedCollection.name}
                         </p>
                         <span className=''>
@@ -117,9 +114,6 @@ const CardCollection = ({
                             <p className='bg-gray-c3 rounded-2xl px-2 mx-auto text-left'>
                                 {shortenText(selectedCollection?.subTitle, MAX_LENGTH)}
                             </p>
-                        </span>
-                        <span className=''>
-                            Deleted: {selectedCollection.isDelete.toString().toUpperCase()}
                         </span>
                     </div>
                 </div>

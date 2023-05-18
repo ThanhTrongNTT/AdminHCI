@@ -156,7 +156,7 @@ const DetailProductStyle = ({ onSubmit, onCancel, style }: UpdateProductStylePro
                                     Subtitle:
                                 </label>
                                 <InputDefault
-                                    placeholder='Enter Sub Title'
+                                    placeholder='Enter Subtitle'
                                     control={control}
                                     name='subTitle'
                                     className='col-span-3'

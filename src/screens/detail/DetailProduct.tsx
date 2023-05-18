@@ -94,7 +94,7 @@ const DetailProduct = ({ onSubmit, onCancel, product }: UpdateProductryProps) =>
     return (
         <>
             <div>
-                <h1 className='font-bold text-3xl mb-7 text-center'>Create New Product</h1>
+                <h1 className='font-bold text-3xl mb-7 text-center'>Update Product</h1>
                 <div className='w-full p-2 bg-white rounded-xl overflow-y-auto h-[450px]'>
                     <form onSubmit={handleSubmit(updateHandler)}>
                         <div className='flex flex-col gap-4'>
@@ -131,7 +131,7 @@ const DetailProduct = ({ onSubmit, onCancel, product }: UpdateProductryProps) =>
                                     <DropdownForProduct
                                         control={control}
                                         setValue={setValue}
-                                        dropdownLabel='Select Category'
+                                        dropdownLabel={product.category.name}
                                         name='categoryId'
                                         list={categoreis}
                                         className={'col-span-3'}
@@ -147,7 +147,7 @@ const DetailProduct = ({ onSubmit, onCancel, product }: UpdateProductryProps) =>
                                     <DropdownForProduct
                                         control={control}
                                         setValue={setValue}
-                                        dropdownLabel='Select Collection'
+                                        dropdownLabel={product.collection.name}
                                         name='collectionId'
                                         list={collections}
                                         className={'col-span-3'}
@@ -165,7 +165,7 @@ const DetailProduct = ({ onSubmit, onCancel, product }: UpdateProductryProps) =>
                                     <Dropdown
                                         control={control}
                                         setValue={setValue}
-                                        dropdownLabel='Select Form'
+                                        dropdownLabel={product.form}
                                         name='form'
                                         list={forms}
                                         className={'col-span-3'}
@@ -181,7 +181,7 @@ const DetailProduct = ({ onSubmit, onCancel, product }: UpdateProductryProps) =>
                                     <Dropdown
                                         control={control}
                                         setValue={setValue}
-                                        dropdownLabel='Select Material'
+                                        dropdownLabel={product.material}
                                         name='material'
                                         list={materials}
                                         className={'col-span-3'}
@@ -197,7 +197,7 @@ const DetailProduct = ({ onSubmit, onCancel, product }: UpdateProductryProps) =>
                                     <DropdownForProduct
                                         control={control}
                                         setValue={setValue}
-                                        dropdownLabel='Select Style'
+                                        dropdownLabel={product.style.name}
                                         name='styleId'
                                         list={styles}
                                         className={'col-span-3'}

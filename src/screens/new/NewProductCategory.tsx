@@ -121,7 +121,7 @@ const NewProductCategory = ({ onSubmit, onCancel }: NewProductCategoryProps) => 
                                     Category Name:
                                 </label>
                                 <InputDefault
-                                    placeholder='Enter Product Name'
+                                    placeholder='Enter Category Name'
                                     control={control}
                                     name='name'
                                     className='col-span-3'
@@ -148,12 +148,6 @@ const NewProductCategory = ({ onSubmit, onCancel }: NewProductCategoryProps) => 
                                     onChange={handleChange}
                                     className='w-2/4 px-4 py-2 rounded-lg border border-c6'
                                 />
-                                {/* <InputFile
-                                    control={control}
-                                    name='media'
-                                    className='w-2/4 px-4 py-2 rounded-lg border border-c6'
-                                    handleChange={handleChange}
-                                /> */}
                                 <Button
                                     outline={false}
                                     type='button'

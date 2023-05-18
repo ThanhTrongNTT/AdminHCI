@@ -135,7 +135,7 @@ const DetailProductCategory = ({ onSubmit, onCancel, category }: UpdateProductCa
                                     Category Name:
                                 </label>
                                 <InputDefault
-                                    placeholder='Enter Product Name'
+                                    placeholder='Enter Category Name'
                                     control={control}
                                     name='name'
                                     className='col-span-3'

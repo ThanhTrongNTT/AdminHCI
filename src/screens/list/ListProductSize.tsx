@@ -173,9 +173,6 @@ const ListProductSize = () => {
                                 Weight
                             </th>
                             <th scope='col' className='px-6'>
-                                Deleted
-                            </th>
-                            <th scope='col' className='px-6'>
                                 Action
                             </th>
                         </tr>
@@ -200,15 +197,6 @@ const ListProductSize = () => {
                                     className='py-4 px-6 font-medium text-black whitespace-nowrap'
                                 >
                                     {size.weight}
-                                </th>
-                                <th
-                                    scope='row'
-                                    className={className(
-                                        'py-4 px-6 font-medium whitespace-nowrap',
-                                        size.isDelete ? 'text-success' : ' text-warning',
-                                    )}
-                                >
-                                    {size.isDelete.toString().toUpperCase()}
                                 </th>
                                 <th
                                     scope='row'
