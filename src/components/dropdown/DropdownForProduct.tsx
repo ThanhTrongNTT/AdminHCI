@@ -6,11 +6,11 @@ type PropTypes = {
     control: any;
     dropdownLabel: string;
     setValue: Function;
-    list: Array<string>;
+    list: Array<any>;
     className: string;
 };
 
-const Dropdown = ({
+const DropdownForProduct = ({
     name,
     control,
     dropdownLabel = '',
@@ -26,6 +26,7 @@ const Dropdown = ({
 
     const handleGetValue = (e: any) => {
         setValue(name, e.target.value);
+        console.log(e.target.value);
     };
 
     return (
@@ -38,12 +39,12 @@ const Dropdown = ({
                 {dropdownLabel}
             </option>
             {list.map((item, index) => (
-                <option data-value={item} key={index}>
-                    {item}
+                <option value={item.id} key={index}>
+                    {item.name}
                 </option>
             ))}
         </select>
     );
 };
 
-export default Dropdown;
+export default DropdownForProduct;

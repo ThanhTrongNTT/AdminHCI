@@ -28,6 +28,11 @@ const Sidebar = () => {
             icon: <IconCategory />,
         },
         {
+            title: 'Product Style',
+            link: 'product-style',
+            icon: <IconCategory />,
+        },
+        {
             title: 'Product Color',
             link: 'product-color',
             icon: <IconCategory />,

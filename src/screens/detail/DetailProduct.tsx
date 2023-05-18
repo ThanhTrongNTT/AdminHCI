@@ -1,14 +1,14 @@
-import { yupResolver } from '@hookform/resolvers/yup';
 import { Button } from 'flowbite-react';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
-import * as Yup from 'yup';
 import { productCategoryApi, productCollectionApi, productStyleApi } from '~/api/product.api';
 import WrapperField from '~/components/common/WrapperField';
-import Dropdown from '~/components/dropdown/Dropdown';
 import DropdownForProduct from '~/components/dropdown/DropdownForProduct';
 import InputDefault from '~/components/input/InputDefault';
+import * as Yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
+import Dropdown from '~/components/dropdown/Dropdown';
 
 const schema = Yup.object({
     name: Yup.string().required('Please enter your Product Name!'),
@@ -20,12 +20,13 @@ const schema = Yup.object({
     styleId: Yup.string().required('Please choose Style!'),
 });
 
-type NewProductProps = {
-    onSubmit: (values: any) => void;
+type UpdateProductryProps = {
+    onSubmit: (id: string, values: any) => void;
     onCancel: () => void;
+    product: any;
 };
 
-const NewProduct = ({ onSubmit, onCancel }: NewProductProps) => {
+const DetailProduct = ({ onSubmit, onCancel, product }: UpdateProductryProps) => {
     const [styles, setStyles] = useState<string[]>([]);
     const [collections, setCollections] = useState<string[]>([]);
     const [categoreis, setCategoreis] = useState<string[]>([]);
@@ -46,11 +47,6 @@ const NewProduct = ({ onSubmit, onCancel }: NewProductProps) => {
             setStyles(res.result.data);
         });
     };
-
-    const onHandleSubmitNew = (values: any) => {
-        onSubmit(values);
-        resetForm();
-    };
     const {
         handleSubmit,
         control,
@@ -58,16 +54,20 @@ const NewProduct = ({ onSubmit, onCancel }: NewProductProps) => {
         reset,
         formState: { errors },
     } = useForm({ resolver: yupResolver(schema), mode: 'onSubmit' });
-    const resetForm = () => {
+    const resetForm = (values: any) => {
         reset({
-            name: '',
-            description: '',
+            name: values.name,
+            description: values.description,
             categoryId: '',
             collectionId: '',
             styleId: '',
-            form: '',
-            material: '',
+            form: values.form,
+            material: values.material,
         });
+    };
+    const updateHandler = (values: any) => {
+        onSubmit(product.id, values);
+        resetForm(values);
     };
     useEffect(() => {
         const arrErrors = Object.values(errors);
@@ -86,13 +86,17 @@ const NewProduct = ({ onSubmit, onCancel }: NewProductProps) => {
     useEffect(() => {
         getAllSelection();
     }, []);
-
+    useEffect(() => {
+        setValue('name', product.name);
+        setValue('description', product.description);
+        setValue('form', product.form);
+    }, []);
     return (
         <>
             <div>
                 <h1 className='font-bold text-3xl mb-7 text-center'>Create New Product</h1>
                 <div className='w-full p-2 bg-white rounded-xl overflow-y-auto h-[450px]'>
-                    <form onSubmit={handleSubmit(onHandleSubmitNew)}>
+                    <form onSubmit={handleSubmit(updateHandler)}>
                         <div className='flex flex-col gap-4'>
                             <WrapperField>
                                 <label htmlFor='' className='font-bold text-left'>
@@ -216,4 +220,4 @@ const NewProduct = ({ onSubmit, onCancel }: NewProductProps) => {
     );
 };
 
-export default NewProduct;
+export default DetailProduct;
