@@ -10,6 +10,7 @@ import ListProductColor from '~/screens/list/ListProductColor';
 import ListProductSize from '~/screens/list/ListProductSize';
 import ListProductCollection from '~/screens/list/ListProductCollection';
 import ListProductCategory from '~/screens/list/ListProductCategory';
+import ListProductStyle from '~/screens/list/ListProductStyle';
 
 function DeclareRouter() {
     return (
@@ -27,6 +28,7 @@ function DeclareRouter() {
                         <Route path='product-size' element={<ListProductSize />} />
                         <Route path='product-collection' element={<ListProductCollection />} />
                         <Route path='product-category' element={<ListProductCategory />} />
+                        <Route path='product-style' element={<ListProductStyle />} />
                         <Route path='order' element={<ListOrder />} />
                         <Route path='coupon' />
                     </Route>
