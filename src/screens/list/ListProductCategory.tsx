@@ -1,11 +1,10 @@
 import { Modal, Pagination } from 'flowbite-react';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
+import { productCategoryApi } from '~/api/product.api';
 import CardCategory from '~/components/card/CardCategory';
-import Cardproduct from '~/components/card/Cardproduct';
 import { IconPlus } from '~/components/icon/Icon';
 import NewProductCategory from '../new/NewProductCategory';
-import { productCategoryApi } from '~/api/product.api';
-import { toast } from 'react-toastify';
 
 const ListProductCategory = () => {
     const [modalNew, setModalNew] = useState(false);
@@ -34,7 +33,6 @@ const ListProductCategory = () => {
         setModalNew(!modalNew);
     };
     const onSubmitNew = (values: any) => {
-        console.log(values);
         productCategoryApi.createProductCategory(values).then((res: any) => {
             if (res.result === null) {
                 toast.error(res.message);
@@ -44,6 +42,27 @@ const ListProductCategory = () => {
             }
         });
         setModalNew(!modalNew);
+    };
+    const onHandleSubmitUpdate = (id: string, values: any) => {
+        productCategoryApi.updateProductCategory(id, values).then((res: any) => {
+            if (res.result === null) {
+                toast.error(res.message);
+            } else {
+                toast.success('Update Category success!');
+                getAllCategory(pageNumber);
+            }
+        });
+    };
+    const onHandleDelete = (id: string) => {
+        //* Excute Logic avout delete Size
+        productCategoryApi.deleteProductCategory(id).then((res: any) => {
+            if (res.result === null) {
+                toast.error('Delete Category unsuccess!');
+            } else {
+                toast.success('Delete Category Success!');
+                getAllCategory(pageNumber);
+            }
+        });
     };
     useEffect(() => {
         getAllCategory(pageNumber);
@@ -70,7 +89,12 @@ const ListProductCategory = () => {
             </button>
             <div className='flex flex-wrap items-center justify-center gap-4'>
                 {categories.map((category: any, index) => (
-                    <CardCategory category={category} />
+                    <CardCategory
+                        selectedCategory={category}
+                        key={index}
+                        onHandleDelete={onHandleDelete}
+                        onHandleSubmitUpdate={onHandleSubmitUpdate}
+                    />
                 ))}
             </div>
             <div className='flex justify-center'>

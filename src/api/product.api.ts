@@ -62,7 +62,7 @@ const productCollectionApi = {
     },
     updateProductCollection: (id: string, data: ProductCollectionDTO) => {
         const url = `product/collection/${id}/update`;
-        AxiosClient.put(url, data);
+        return AxiosClient.put(url, data);
     },
     deleteProductCollection: (id: string) => {
         const url = `product/collection/${id}`;
@@ -78,12 +78,12 @@ const productStyleApi = {
         const url = 'product/style/create';
         return AxiosClient.post(url, data);
     },
-    updateProductSize: (id: string, data: ProductSizeDTO) => {
-        const url = `product/${id}/update`;
+    updateProductStyle: (id: string, data: ProductSizeDTO) => {
+        const url = `product/style/${id}/update`;
         return AxiosClient.put(url, data);
     },
-    deleteProductSize: (id: string) => {
-        const url = `product/size/${id}`;
+    deleteProductStyle: (id: string) => {
+        const url = `product/style/${id}`;
         return AxiosClient.delete(url);
     },
 };
