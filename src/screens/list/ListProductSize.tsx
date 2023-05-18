@@ -66,7 +66,6 @@ const ListProductSize = () => {
         productSizeApi.updateProductSize(selectedSize.id, values).then((res: any) => {
             if (res.result === null) {
                 toast.error(res.message);
-                getAllSize(pageNumber);
             } else {
                 toast.success('Update Size success!');
                 getAllSize(pageNumber);
@@ -80,7 +79,6 @@ const ListProductSize = () => {
         productSizeApi.deleteProductSize(selectedSize.id).then((res: any) => {
             if (res.result === null) {
                 toast.error('Delete Size unsuccess!');
-                getAllSize(pageNumber);
             } else {
                 toast.success('Delete Size Success!');
                 getAllSize(pageNumber);
