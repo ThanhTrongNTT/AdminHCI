@@ -61,7 +61,6 @@ const NewProductCategory = ({ onSubmit, onCancel }: NewProductCategoryProps) => 
         // newImage['id'] = Math.random();
         setImage(newImage);
         setIsUploaded(true);
-        console.log(isUploaded.toString());
     };
     const uploadFirebase = () => {
         setUploading(!uploading);

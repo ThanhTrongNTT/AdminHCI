@@ -34,15 +34,12 @@ const NewProduct = ({ onSubmit, onCancel }: NewProductProps) => {
     const data = { orders: [], filter: [], size: 200, totalElement: 0, pageNumber: 1 };
     const getAllSelection = () => {
         productCollectionApi.getAllProductCollection(data).then((res: any) => {
-            console.log('collection: ', res);
             setCollections(res.result.data);
         });
         productCategoryApi.getAllProductCategory(data).then((res: any) => {
-            console.log('category: ', res);
             setCategoreis(res.result.data);
         });
         productStyleApi.getAllProductStyle(data).then((res: any) => {
-            console.log('style: ', res);
             setStyles(res.result.data);
         });
     };

@@ -43,7 +43,6 @@ const ListProductSize = () => {
         setModalNew(!modalNew);
     };
     const onSubmitNew = (values: any) => {
-        console.log(values);
         //* Excute Logic create new Size
         productSizeApi.createProductSize(values).then((res: any) => {
             if (res.result) {
@@ -72,7 +71,6 @@ const ListProductSize = () => {
             }
             setModalUpdate(!modalUpdate);
         });
-        console.log(values);
     };
     const handleDeleteSize = () => {
         //* Excute Logic avout delete Size

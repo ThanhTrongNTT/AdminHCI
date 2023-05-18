@@ -26,7 +26,6 @@ function ListProduct() {
         productApi.getAllProduct(data).then((res: any) => {
             setTotalElement(Number(res.result.page.totalElement));
             setProducts(res.result.data);
-            console.log(res.result.data);
             setIsLoadData(true);
         });
     };
@@ -34,7 +33,6 @@ function ListProduct() {
         setModalNew(!modalNew);
     };
     const onSubmitNew = (values: any) => {
-        console.log(values);
         productApi.createProduct(values).then((res: any) => {
             if (res.result === null) {
                 toast.error(res.message);

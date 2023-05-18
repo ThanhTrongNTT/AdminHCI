@@ -26,7 +26,6 @@ const DropdownForProduct = ({
 
     const handleGetValue = (e: any) => {
         setValue(name, e.target.value);
-        console.log(e.target.value);
     };
 
     return (

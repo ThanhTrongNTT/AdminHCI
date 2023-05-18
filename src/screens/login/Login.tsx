@@ -31,7 +31,6 @@ const Login = () => {
     const loginHandler = async (values: any) => {
         const { email, password } = values;
         authApi.login({ email, password }).then((res: any) => {
-            console.log('res: ', res);
             if (res) {
                 const accessToken = res.result.access;
                 let decode: any = jwtDecode(accessToken);

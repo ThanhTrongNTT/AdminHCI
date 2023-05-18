@@ -71,7 +71,6 @@ const ListProductColor = () => {
             }
             setModalUpdate(!modalUpdate);
         });
-        console.log(values);
     };
     const handleDeleteColor = () => {
         productColorApi.deleteProductColor(colorCurrent.id).then((res: any) => {
