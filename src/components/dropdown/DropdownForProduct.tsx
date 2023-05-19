@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useWatch } from 'react-hook-form';
 import { className as classNameUtil } from '~/utils/className';
 
@@ -8,6 +9,7 @@ type PropTypes = {
     setValue: Function;
     list: Array<any>;
     className: string;
+    selected?: any;
 };
 
 const DropdownForProduct = ({
@@ -17,19 +19,26 @@ const DropdownForProduct = ({
     setValue,
     list = [],
     className,
+    selected,
 }: PropTypes) => {
     const dropdownValue = useWatch({
         control,
         name,
-        defaultValue: dropdownLabel, // default value before the render
+        defaultValue: selected?.name ? selected?.name : dropdownLabel, // default value before the render
     });
 
     const handleGetValue = (e: any) => {
         setValue(name, e.target.value);
     };
+    useEffect(() => {
+        if (selected) {
+            setValue(name, selected.id);
+        }
+    });
+
     return (
         <select
-            defaultValue={dropdownLabel}
+            defaultValue={selected?.name ? selected?.name : dropdownLabel}
             onChange={handleGetValue}
             className={classNameUtil('px-5 py-3 rounded-md border border-c6', className)}
         >

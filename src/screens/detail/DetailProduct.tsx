@@ -9,6 +9,7 @@ import InputDefault from '~/components/input/InputDefault';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import Dropdown from '~/components/dropdown/Dropdown';
+import { compareFieldValues, compareTwoObject } from '~/utils/CompareObject';
 
 const schema = Yup.object({
     name: Yup.string().required('Please enter your Product Name!'),
@@ -55,9 +56,6 @@ const DetailProduct = ({ onSubmit, onCancel, product }: UpdateProductryProps) =>
         reset({
             name: values.name,
             description: values.description,
-            categoryId: '',
-            collectionId: '',
-            styleId: '',
             form: values.form,
             material: values.material,
         });
@@ -128,9 +126,10 @@ const DetailProduct = ({ onSubmit, onCancel, product }: UpdateProductryProps) =>
                                     <DropdownForProduct
                                         control={control}
                                         setValue={setValue}
-                                        dropdownLabel={product.category.name}
+                                        dropdownLabel='Choose Category'
                                         name='categoryId'
                                         list={categoreis}
+                                        selected={product.category}
                                         className={'col-span-3'}
                                     />
                                 </div>
@@ -144,9 +143,10 @@ const DetailProduct = ({ onSubmit, onCancel, product }: UpdateProductryProps) =>
                                     <DropdownForProduct
                                         control={control}
                                         setValue={setValue}
-                                        dropdownLabel={product.collection.name}
+                                        dropdownLabel='Choose Collection'
                                         name='collectionId'
                                         list={collections}
+                                        selected={product.collection}
                                         className={'col-span-3'}
                                     />
                                 </div>
@@ -162,9 +162,10 @@ const DetailProduct = ({ onSubmit, onCancel, product }: UpdateProductryProps) =>
                                     <Dropdown
                                         control={control}
                                         setValue={setValue}
-                                        dropdownLabel={product.form}
+                                        dropdownLabel='Choose Form'
                                         name='form'
                                         list={forms}
+                                        selected={product.form}
                                         className={'col-span-3'}
                                     />
                                 </div>
@@ -178,9 +179,10 @@ const DetailProduct = ({ onSubmit, onCancel, product }: UpdateProductryProps) =>
                                     <Dropdown
                                         control={control}
                                         setValue={setValue}
-                                        dropdownLabel={product.material}
+                                        dropdownLabel='Choose Form'
                                         name='material'
                                         list={materials}
+                                        selected={product.material}
                                         className={'col-span-3'}
                                     />
                                 </div>
@@ -194,9 +196,10 @@ const DetailProduct = ({ onSubmit, onCancel, product }: UpdateProductryProps) =>
                                     <DropdownForProduct
                                         control={control}
                                         setValue={setValue}
-                                        dropdownLabel={product.style.name}
+                                        dropdownLabel='Choose Size'
                                         name='styleId'
                                         list={styles}
+                                        selected={product.style}
                                         className={'col-span-3'}
                                     />
                                 </div>

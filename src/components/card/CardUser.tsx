@@ -2,7 +2,6 @@ import { Avatar, Button, Modal } from 'flowbite-react';
 import { useState } from 'react';
 import { EditEmployeeDTO } from '~/data/UserInterface';
 import DetailUser from '~/screens/detail/DetailUser';
-import NewProduct from '~/screens/new/NewProduct';
 
 const CardUser = (user: EditEmployeeDTO) => {
     const [modalDelete, setModalDelete] = useState(false);

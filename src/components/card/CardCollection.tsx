@@ -86,7 +86,7 @@ const CardCollection = ({
                     </>
                 </Modal.Body>
             </Modal>
-            <div className='w-[350px] bg-white m-2 rounded-2xl h-[650px]'>
+            <div className='w-[350px] bg-white m-2 rounded-2xl'>
                 <img
                     className='h-[300px] w-full rounded-t-2xl'
                     src={
