@@ -10,7 +10,7 @@ type PropTypes = {
     className: string;
 };
 
-const DropdownForProduct = ({
+const DropdownForColor = ({
     name,
     control,
     dropdownLabel = '',
@@ -38,11 +38,11 @@ const DropdownForProduct = ({
             </option>
             {list.map((item, index) => (
                 <option value={item.id} key={index}>
-                    {item.name}
+                    {item.colorName}
                 </option>
             ))}
         </select>
     );
 };
 
-export default DropdownForProduct;
+export default DropdownForColor;

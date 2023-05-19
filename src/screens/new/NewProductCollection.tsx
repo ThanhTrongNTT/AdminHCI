@@ -30,7 +30,7 @@ const NewProductCollection = ({ onSubmit, onCancel }: NewProductCollectionProps)
     const {
         handleSubmit,
         control,
-        setValue,
+        // setValue,
         reset,
         formState: { errors },
     } = useForm({ resolver: yupResolver(schema), mode: 'onSubmit' });
@@ -162,8 +162,7 @@ const NewProductCollection = ({ onSubmit, onCancel }: NewProductCollectionProps)
                                     disabled={!isUploaded}
                                     onClick={uploadFirebase}
                                     className={className(
-                                        'ml-4 h-12 w-[130px] rounded-md text-white font-semibold',
-                                        'bg-gradient-to-br from-orange-500 to-pink-500',
+                                        'ml-4 h-12 w-[130px] rounded-md text-white font-semibold bg-gradient-to-br from-orange-500 to-pink-500',
                                     )}
                                 >
                                     {!uploading ? (

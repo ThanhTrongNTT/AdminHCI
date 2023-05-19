@@ -1,16 +1,15 @@
+import { yupResolver } from '@hookform/resolvers/yup';
+import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 import { Button } from 'flowbite-react';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
+import * as Yup from 'yup';
+import storage from '~/api/firebase/Firebase';
 import WrapperField from '~/components/common/WrapperField';
+import Dropdown from '~/components/dropdown/Dropdown';
 import InputDefault from '~/components/input/InputDefault';
 import { className } from '~/utils/className';
-import * as Yup from 'yup';
-import { yupResolver } from '@hookform/resolvers/yup';
-import Dropdown from '~/components/dropdown/Dropdown';
-import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
-import storage from '~/api/firebase/Firebase';
-import InputFile from '~/components/input/InputFile';
 
 const schema = Yup.object({
     name: Yup.string().required('Please enter your Category Name!'),

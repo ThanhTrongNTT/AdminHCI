@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import Cardproduct from '~/components/card/Cardproduct';
 import { IconPlus } from '~/components/icon/Icon';
 import NewProduct from '../new/NewProduct';
-import { productApi } from '~/api/product.api';
+import { productApi, subProductApi } from '~/api/product.api';
 import { toast } from 'react-toastify';
 
 function ListProduct() {
@@ -64,6 +64,16 @@ function ListProduct() {
             }
         });
     };
+    const onHandleNewSubproduct = (productId: string, values: any) => {
+        subProductApi.createSubProduct(productId, values).then((res: any) => {
+            if (res.result === null) {
+                toast.error(res.message);
+            } else {
+                toast.success('Create Subproduct success!');
+                getAllProduct(pageNumber);
+            }
+        });
+    };
     useEffect(() => {
         getAllProduct(pageNumber);
     }, []);
@@ -101,6 +111,8 @@ function ListProduct() {
                         key={index}
                         onHandleSubmitUpdate={onHandleSubmitUpdate}
                         onHandleDelete={onHandleDelete}
+                        onHandleNewSubproduct={onHandleNewSubproduct}
+                        onHandleUpdateSubproduct={() => {}}
                         product={product}
                     />
                 ))}

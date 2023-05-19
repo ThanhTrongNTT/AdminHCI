@@ -1,25 +1,42 @@
 import { Button, Modal } from 'flowbite-react';
-import React, { useState } from 'react';
-import NewProduct from '~/screens/new/NewProduct';
-import NewSubproduct from '~/screens/new/NewSubproduct';
-import TogglePublic from '../toogle/TogglePublic';
+import { useState } from 'react';
 import DetailProduct from '~/screens/detail/DetailProduct';
+import TogglePublic from '../toogle/TogglePublic';
+import NewSubproduct from '~/screens/new/NewSubproduct';
+import { className } from '~/utils/className';
 
 type CardProductProps = {
     onHandleDelete: (id: string) => void;
     onHandleSubmitUpdate: (id: string, values: any) => void;
+    onHandleNewSubproduct: (productId: string, values: any) => void;
+    onHandleUpdateSubproduct: (id: string, values: any) => void;
     product: any;
 };
 
-const Cardproduct = ({ onHandleDelete, onHandleSubmitUpdate, product }: CardProductProps) => {
+const Cardproduct = ({
+    onHandleDelete,
+    onHandleSubmitUpdate,
+    onHandleNewSubproduct,
+    onHandleUpdateSubproduct,
+    product,
+}: CardProductProps) => {
     const [modalDelete, setModalDelete] = useState(false);
     const [modalUpdate, setModalUpdate] = useState(false);
     const [modalSubProduct, setModalSubProduct] = useState(false);
+    const [modalUpdateSubProduct, setModalUpdateSubProduct] = useState(false);
     const onCloseSubproduct = () => {
         setModalSubProduct(!modalSubProduct);
     };
     const onSubmitSubproduct = (values: any) => {
-        console.log(values);
+        onHandleNewSubproduct(product.id, values);
+        setModalSubProduct(!modalSubProduct);
+    };
+    const onCloseUpdateSubproduct = () => {
+        setModalUpdateSubProduct(!modalUpdateSubProduct);
+    };
+    const onSubmitUpdateSubproduct = (values: any) => {
+        onHandleNewSubproduct(product.id, values);
+        setModalUpdateSubProduct(!modalUpdateSubProduct);
     };
     const onCloseUpdate = () => {
         setModalUpdate(!modalUpdate);
@@ -45,7 +62,9 @@ const Cardproduct = ({ onHandleDelete, onHandleSubmitUpdate, product }: CardProd
                 onClose={onCloseSubproduct}
             >
                 <Modal.Header className='bg-white' />
-                <Modal.Body className='bg-white'></Modal.Body>
+                <Modal.Body className='bg-white'>
+                    <NewSubproduct onSubmit={onSubmitSubproduct} onCancel={onCloseSubproduct} />
+                </Modal.Body>
             </Modal>
             <Modal
                 show={modalUpdate}
@@ -107,15 +126,24 @@ const Cardproduct = ({ onHandleDelete, onHandleSubmitUpdate, product }: CardProd
                         <span className='flex items-center'>
                             <p>Subproduct:</p>
                             {product.items.length === 0 ? (
-                                <button
-                                    className='px-2 rounded-lg mx-3 hover:bg-gray-c4 bg-success'
-                                    onClick={onCloseSubproduct}
-                                >
-                                    +
-                                </button>
+                                <></>
                             ) : (
-                                product.items.map((sub: any, index: number) => '')
+                                product.items.map((sub: any, index: number) => (
+                                    <div
+                                        key={index}
+                                        style={{ backgroundColor: sub.color.colorValue }}
+                                        className={className(
+                                            'h-[24px] w-[24px] mx-2 rounded-lg cursor-pointer',
+                                        )}
+                                    ></div>
+                                ))
                             )}
+                            <button
+                                className='px-2 rounded-lg ml-2 hover:bg-gray-c4 bg-success'
+                                onClick={onCloseSubproduct}
+                            >
+                                +
+                            </button>
                         </span>
                         <TogglePublic productId='asdhjasgash' />
                     </div>

@@ -1,17 +1,16 @@
+import { yupResolver } from '@hookform/resolvers/yup';
+import jwtDecode from 'jwt-decode';
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import * as Yup from 'yup';
 import authApi from '~/api/auth.api';
-import { productColorApi } from '~/api/product.api';
 import FormGroup from '~/components/common/FormGroup';
 import { IconUser } from '~/components/icon/Icon';
 import Input from '~/components/input/Input';
 import TogglePassword from '~/components/toogle/TogglePassword';
 import useToggleValue from '~/hooks/useToggleValue';
-import jwtDecode from 'jwt-decode';
-import { toast } from 'react-toastify';
-import * as Yup from 'yup';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { useEffect } from 'react';
 
 const schema = Yup.object({
     email: Yup.string()
@@ -51,7 +50,7 @@ const Login = () => {
     const {
         handleSubmit,
         control,
-        formState: { errors, isValid, isSubmitting },
+        formState: { errors },
     } = useForm({
         resolver: yupResolver(schema),
         mode: 'onSubmit',

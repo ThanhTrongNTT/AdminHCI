@@ -30,7 +30,7 @@ const NewProductStyle = ({ onSubmit, onCancel }: NewProductStyleProps) => {
     const {
         handleSubmit,
         control,
-        setValue,
+        // setValue,
         reset,
         formState: { errors },
     } = useForm({ resolver: yupResolver(schema), mode: 'onSubmit' });
