@@ -12,6 +12,7 @@ type CardProductProps = {
     onHandleSubmitUpdate: (id: string, values: any) => void;
     onHandleNewSubproduct: (productId: string, values: any) => void;
     onHandleUpdateSubproduct: (productId: string, subProductId: string, values: any) => void;
+    onDeleteSubProduct: (productId: string, subProductId: string) => void;
     handleSetPublic: (product: any) => void;
     product: any;
 };
@@ -21,6 +22,7 @@ const Cardproduct = ({
     onHandleSubmitUpdate,
     onHandleNewSubproduct,
     onHandleUpdateSubproduct,
+    onDeleteSubProduct,
     handleSetPublic,
     product,
 }: CardProductProps) => {
@@ -57,6 +59,10 @@ const Cardproduct = ({
     };
     const onCancelDelete = () => {
         setModalDelete(!modalDelete);
+    };
+    const handleDeleteSub = (subProductId: string) => {
+        onDeleteSubProduct(product.id, subProductId);
+        setModalUpdateSubProduct(!modalUpdateSubProduct);
     };
     const onHandleSetPublic = () => {
         handleSetPublic(selectedProduct);
@@ -130,7 +136,10 @@ const Cardproduct = ({
                         <p className=''>Form: {product.form}</p>
                         <p className=''>Material: {product.material}</p>
                         <p className=''>Collection: {product.collection.name}</p>
-                        <p className=''>Category: {product.category.name}</p>
+                        <p className=''>
+                            Category: {product.category.name} -{' '}
+                            {product.category.gender.toUpperCase()}
+                        </p>
                         <p className=''>Style: {product.style.name}</p>
                         <span className='flex items-center'>
                             <p>Subproduct:</p>
@@ -152,6 +161,7 @@ const Cardproduct = ({
                                                     onSubmit={onSubmitUpdateSubproduct}
                                                     onCancel={onCloseUpdateSubproduct}
                                                     subProduct={sub}
+                                                    onDelete={handleDeleteSub}
                                                 />
                                             </Modal.Body>
                                         </Modal>
@@ -161,7 +171,7 @@ const Cardproduct = ({
                                             className={className(
                                                 'h-[24px] w-[24px] mx-2 rounded-lg cursor-pointer',
                                                 sub.color.colorValue === '#ffffff'
-                                                    ? 'border border-gray-c5'
+                                                    ? 'border border-gra'
                                                     : '',
                                             )}
                                         ></div>

@@ -24,10 +24,11 @@ const schema = Yup.object({
 type UpdateSubproductProps = {
     onSubmit: (id: string, values: any) => void;
     onCancel: () => void;
+    onDelete: (subId: string) => void;
     subProduct: any;
 };
 
-const DetailSubProduct = ({ onSubmit, onCancel, subProduct }: UpdateSubproductProps) => {
+const DetailSubProduct = ({ onSubmit, onCancel, onDelete, subProduct }: UpdateSubproductProps) => {
     const [isUploaded, setIsUploaded] = useState(false);
     const [uploading, setUploading] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
@@ -93,6 +94,8 @@ const DetailSubProduct = ({ onSubmit, onCancel, subProduct }: UpdateSubproductPr
                 (error: any) => console.log(error),
                 () => {
                     getDownloadURL(uploadTask.snapshot.ref).then((url: string) => {
+                        console.log(url);
+
                         setUrls((prev) => [...prev, url]);
                     });
                 },
@@ -131,6 +134,9 @@ const DetailSubProduct = ({ onSubmit, onCancel, subProduct }: UpdateSubproductPr
         };
         onSubmit(subProduct.id, values);
         resetForm(values);
+    };
+    const deletehandler = () => {
+        onDelete(subProduct.id);
     };
     useEffect(() => {
         const arrErrors = Object.values(errors);
@@ -251,7 +257,9 @@ const DetailSubProduct = ({ onSubmit, onCancel, subProduct }: UpdateSubproductPr
                             <Button color='failure' onClick={onCancel}>
                                 No, cancel
                             </Button>
-                            <Button color='failure'>Delete</Button>
+                            <Button color='failure' onClick={deletehandler}>
+                                Delete
+                            </Button>
                         </div>
                     </form>
                 </div>

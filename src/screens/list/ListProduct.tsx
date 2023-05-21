@@ -84,6 +84,17 @@ function ListProduct() {
             }
         });
     };
+    const onDeleteSubProduct = (productId: string, subProductId: string) => {
+        subProductApi.deleteSubProduct(productId, subProductId).then((res: any) => {
+            if (res.result === null) {
+                toast.error(res.message);
+                getAllProduct(pageNumber);
+            } else {
+                toast.success('Delete Subproduct success!');
+                getAllProduct(pageNumber);
+            }
+        });
+    };
     const handleSetPublic = (product: any) => {
         if (product.isPublic) {
             productApi.setDeactivateProduct(product.id).then((res: any) => {
@@ -140,6 +151,7 @@ function ListProduct() {
                         onHandleDelete={onHandleDelete}
                         onHandleNewSubproduct={onHandleNewSubproduct}
                         onHandleUpdateSubproduct={onHandleUpdateSubproduct}
+                        onDeleteSubProduct={onDeleteSubProduct}
                         product={product}
                         handleSetPublic={handleSetPublic}
                     />

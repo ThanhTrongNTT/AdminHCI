@@ -52,7 +52,7 @@ const subProductApi = {
         return AxiosClient.put(url, data);
     },
     deleteSubProduct: (productId: string, subProductId: string) => {
-        const url = `product/${productId}/sub-product/${subProductId}`;
+        const url = `/product/${productId}/sub-product/${subProductId}`;
         return AxiosClient.delete(url);
     },
 };

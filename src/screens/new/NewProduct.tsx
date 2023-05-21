@@ -32,11 +32,23 @@ const NewProduct = ({ onSubmit, onCancel }: NewProductProps) => {
     const materials = ['Cotton', 'Cotton Cao Cấp', 'Vải thường'];
     const forms = ['Unisex', 'Sweater', 'Hoodie'];
     const data = { orders: [], filter: [], size: 200, totalElement: 0, pageNumber: 1 };
+    const dataCategory = {
+        orders: [
+            {
+                props: 'gender',
+                sortDir: 'asc',
+            },
+        ],
+        filter: [],
+        size: 200,
+        totalElement: 0,
+        pageNumber: 1,
+    };
     const getAllSelection = () => {
         productCollectionApi.getAllProductCollection(data).then((res: any) => {
             setCollections(res.result.data);
         });
-        productCategoryApi.getAllProductCategory(data).then((res: any) => {
+        productCategoryApi.getAllProductCategory(dataCategory).then((res: any) => {
             setCategoreis(res.result.data);
         });
         productStyleApi.getAllProductStyle(data).then((res: any) => {
