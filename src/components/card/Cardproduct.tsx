@@ -11,7 +11,7 @@ type CardProductProps = {
     onHandleDelete: (id: string) => void;
     onHandleSubmitUpdate: (id: string, values: any) => void;
     onHandleNewSubproduct: (productId: string, values: any) => void;
-    onHandleUpdateSubproduct: (id: string, values: any) => void;
+    onHandleUpdateSubproduct: (productId: string, subProductId: string, values: any) => void;
     handleSetPublic: (product: any) => void;
     product: any;
 };
@@ -39,8 +39,8 @@ const Cardproduct = ({
     const onCloseUpdateSubproduct = () => {
         setModalUpdateSubProduct(!modalUpdateSubProduct);
     };
-    const onSubmitUpdateSubproduct = (values: any) => {
-        onHandleNewSubproduct(product.id, values);
+    const onSubmitUpdateSubproduct = (subProductId: string, values: any) => {
+        onHandleUpdateSubproduct(product.id, subProductId, values);
         setModalUpdateSubProduct(!modalUpdateSubProduct);
     };
     const onCloseUpdate = () => {
@@ -160,6 +160,9 @@ const Cardproduct = ({
                                             onClick={onCloseUpdateSubproduct}
                                             className={className(
                                                 'h-[24px] w-[24px] mx-2 rounded-lg cursor-pointer',
+                                                sub.color.colorValue === '#ffffff'
+                                                    ? 'border border-gray-c5'
+                                                    : '',
                                             )}
                                         ></div>
                                     </div>

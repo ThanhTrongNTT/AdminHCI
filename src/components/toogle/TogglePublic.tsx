@@ -1,5 +1,5 @@
 import { type } from 'os';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 type TogglePublicProps = {
     product: any;
@@ -12,6 +12,8 @@ const TogglePublic = ({ product, handleSetPublic }: TogglePublicProps) => {
         handleSetPublic();
         setChecked(!checked);
     };
+    useEffect(() => {}, []);
+
     return (
         <>
             <div className='py-4'>

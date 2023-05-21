@@ -12,6 +12,7 @@ import * as Yup from 'yup';
 import { className } from '~/utils/className';
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 import storage from '~/api/firebase/Firebase';
+import { MediaDTO } from '~/data/Contanst';
 
 const schema = Yup.object({
     price: Yup.number().required('Please enter your price!').min(1),
@@ -111,6 +112,23 @@ const DetailSubProduct = ({ onSubmit, onCancel, subProduct }: UpdateSubproductPr
             .catch((err) => console.log(err));
     };
     const updateHandler = (values: any) => {
+        const medias: Array<MediaDTO> = [];
+        // images.forEach((image, index) => {
+        //     medias[index].fileName = image.name;
+        //     medias[index].fileType = image.type;
+        // });
+        images.forEach((image, index) => {
+            const obj = { fileType: image.type, fileName: image.name, filePath: '' };
+            medias.push(obj);
+        });
+        urls.forEach((url, index) => {
+            const obj = medias[index];
+            obj.filePath = url;
+        });
+        const data = {
+            ...values,
+            medias: medias,
+        };
         onSubmit(subProduct.id, values);
         resetForm(values);
     };

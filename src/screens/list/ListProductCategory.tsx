@@ -20,7 +20,12 @@ const ListProductCategory = () => {
     };
     const getAllCategory = (currentPage: number) => {
         setIsLoadData(false);
-        const orders: string[] = [];
+        const orders: any[] = [
+            {
+                props: 'gender',
+                sortDir: 'asc',
+            },
+        ];
         const filter: string[] = [];
         const data = { orders, filter, size, totalElement, pageNumber: currentPage };
         productCategoryApi.getAllProductCategory(data).then((res: any) => {

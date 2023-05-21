@@ -61,7 +61,8 @@ const CardCategory = ({
                             <h1 className='text-2xl font-bold p-3'>Delete Category</h1>
                             <span>
                                 <h1>
-                                    Do you want delete category with name: {selectedCategory.name}
+                                    Do you want delete category with name:{' '}
+                                    {selectedCategory.name.replace(`'`, '')}
                                 </h1>{' '}
                             </span>
 
@@ -79,7 +80,7 @@ const CardCategory = ({
             </Modal>
             <div className='w-[350px] shadow-xl bg-white m-2 rounded-2xl'>
                 <img
-                    className='h-[300px] w-full rounded-t-2xl'
+                    className='h-[450px] w-full rounded-t-2xl object-cover'
                     src={
                         selectedCategory.mediaLink === 'https://google.com' ||
                         selectedCategory.mediaLink === null
@@ -91,7 +92,7 @@ const CardCategory = ({
                 <div className='flex flex-col mt-3'>
                     <div className='ml-5'>
                         <p className='text-black font-semibold text-lg h-[56px]'>
-                            Category Name: {selectedCategory.name}
+                            Category Name: {selectedCategory.name.replace(`'`, '')}
                         </p>
                         <p className=''>Gender: {selectedCategory.gender}</p>
                     </div>

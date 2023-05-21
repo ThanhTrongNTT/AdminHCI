@@ -74,6 +74,16 @@ function ListProduct() {
             }
         });
     };
+    const onHandleUpdateSubproduct = (productId: string, subProductId: string, values: any) => {
+        subProductApi.updateSubProduct(productId, subProductId, values).then((res: any) => {
+            if (res.result === null) {
+                toast.error(res.message);
+            } else {
+                toast.success('Update Subproduct success!');
+                getAllProduct(pageNumber);
+            }
+        });
+    };
     const handleSetPublic = (product: any) => {
         if (product.isPublic) {
             productApi.setDeactivateProduct(product.id).then((res: any) => {
@@ -129,7 +139,7 @@ function ListProduct() {
                         onHandleSubmitUpdate={onHandleSubmitUpdate}
                         onHandleDelete={onHandleDelete}
                         onHandleNewSubproduct={onHandleNewSubproduct}
-                        onHandleUpdateSubproduct={() => {}}
+                        onHandleUpdateSubproduct={onHandleUpdateSubproduct}
                         product={product}
                         handleSetPublic={handleSetPublic}
                     />
