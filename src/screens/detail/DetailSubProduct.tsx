@@ -1,18 +1,17 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 import { Button } from 'flowbite-react';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { toast } from 'react-toastify';
-import * as Yup from 'yup';
-import storage from '~/api/firebase/Firebase';
 import { productColorApi, productSizeApi } from '~/api/product.api';
 import WrapperField from '~/components/common/WrapperField';
 import DropdownForColor from '~/components/dropdown/DropdownForColor';
 import DropdownForSize from '~/components/dropdown/DropdownForSize';
 import InputDefault from '~/components/input/InputDefault';
-import { MediaDTO } from '~/data/Contanst';
+import { toast } from 'react-toastify';
+import * as Yup from 'yup';
 import { className } from '~/utils/className';
+import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
+import storage from '~/api/firebase/Firebase';
 
 const schema = Yup.object({
     price: Yup.number().required('Please enter your price!').min(1),
@@ -21,12 +20,13 @@ const schema = Yup.object({
     sizeId: Yup.number().required('Please choose your Size!'),
 });
 
-type NewSubproductProps = {
-    onSubmit: (values: any) => void;
+type UpdateSubproductProps = {
+    onSubmit: (id: string, values: any) => void;
     onCancel: () => void;
+    subProduct: any;
 };
 
-const NewSubproduct = ({ onSubmit, onCancel }: NewSubproductProps) => {
+const DetailSubProduct = ({ onSubmit, onCancel, subProduct }: UpdateSubproductProps) => {
     const [isUploaded, setIsUploaded] = useState(false);
     const [uploading, setUploading] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
@@ -51,40 +51,16 @@ const NewSubproduct = ({ onSubmit, onCancel }: NewSubproductProps) => {
         formState: { errors },
     } = useForm({ resolver: yupResolver(schema), mode: 'onSubmit' });
     // } = useForm();
-    const resetForm = () => {
+    const resetForm = (values: any) => {
         reset({
-            price: '',
-            quantity: '',
-            colorId: '',
-            sizeId: '',
+            price: subProduct.price,
+            quantity: subProduct.quantity,
         });
         setIsUploaded(false);
         setUploading(false);
         setIsSubmitted(false);
         setUrls([]);
         setImages([]);
-    };
-    const onHandleSubmitNew = (values: any) => {
-        const medias: Array<MediaDTO> = [];
-        // images.forEach((image, index) => {
-        //     medias[index].fileName = image.name;
-        //     medias[index].fileType = image.type;
-        // });
-        images.forEach((image, index) => {
-            const obj = { fileType: image.type, fileName: image.name, filePath: '' };
-            medias.push(obj);
-        });
-        urls.forEach((url, index) => {
-            const obj = medias[index];
-            obj.filePath = url;
-        });
-        const data = {
-            ...values,
-            medias: medias,
-        };
-        console.log(data);
-        onSubmit(data);
-        resetForm();
     };
     //* Logic about firebase
     const handleChange = (e: any) => {
@@ -134,6 +110,10 @@ const NewSubproduct = ({ onSubmit, onCancel }: NewSubproductProps) => {
             })
             .catch((err) => console.log(err));
     };
+    const updateHandler = (values: any) => {
+        onSubmit(subProduct.id, values);
+        resetForm(values);
+    };
     useEffect(() => {
         const arrErrors = Object.values(errors);
         if (arrErrors.length > 0) {
@@ -150,14 +130,15 @@ const NewSubproduct = ({ onSubmit, onCancel }: NewSubproductProps) => {
     }, [errors]);
     useEffect(() => {
         getAllSelection();
+        setValue('price', subProduct.price);
+        setValue('quantity', subProduct.quantity);
     }, []);
-
     return (
         <>
             <div>
                 <h1 className='font-bold text-3xl mb-7 text-center'>Create New Subproduct</h1>
                 <div className='w-full p-2 bg-white rounded-xl overflow-y-auto h-[450px]'>
-                    <form onSubmit={handleSubmit(onHandleSubmitNew)}>
+                    <form onSubmit={handleSubmit(updateHandler)}>
                         <div className='flex flex-col gap-4'>
                             <WrapperField>
                                 <label htmlFor='' className='font-bold text-left'>
@@ -195,6 +176,7 @@ const NewSubproduct = ({ onSubmit, onCancel }: NewSubproductProps) => {
                                         dropdownLabel='Select Color'
                                         name='colorId'
                                         list={colors}
+                                        selected={subProduct.color.colorName}
                                         className={'col-span-3'}
                                     />
                                 </div>
@@ -211,6 +193,7 @@ const NewSubproduct = ({ onSubmit, onCancel }: NewSubproductProps) => {
                                         dropdownLabel='Select Size'
                                         name='sizeId'
                                         list={sizes}
+                                        selected={subProduct.size.sizeName}
                                         className={'col-span-3'}
                                     />
                                 </div>
@@ -250,6 +233,7 @@ const NewSubproduct = ({ onSubmit, onCancel }: NewSubproductProps) => {
                             <Button color='failure' onClick={onCancel}>
                                 No, cancel
                             </Button>
+                            <Button color='failure'>Delete</Button>
                         </div>
                     </form>
                 </div>
@@ -258,4 +242,4 @@ const NewSubproduct = ({ onSubmit, onCancel }: NewSubproductProps) => {
     );
 };
 
-export default NewSubproduct;
+export default DetailSubProduct;

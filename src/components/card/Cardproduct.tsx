@@ -4,6 +4,7 @@ import DetailProduct from '~/screens/detail/DetailProduct';
 import TogglePublic from '../toogle/TogglePublic';
 import NewSubproduct from '~/screens/new/NewSubproduct';
 import { className } from '~/utils/className';
+import DetailSubProduct from '~/screens/detail/DetailSubProduct';
 
 type CardProductProps = {
     onHandleDelete: (id: string) => void;
@@ -129,13 +130,31 @@ const Cardproduct = ({
                                 <></>
                             ) : (
                                 product.items.map((sub: any, index: number) => (
-                                    <div
-                                        key={index}
-                                        style={{ backgroundColor: sub.color.colorValue }}
-                                        className={className(
-                                            'h-[24px] w-[24px] mx-2 rounded-lg cursor-pointer',
-                                        )}
-                                    ></div>
+                                    <div key={index}>
+                                        <Modal
+                                            show={modalUpdateSubProduct}
+                                            size='7xl'
+                                            position='center'
+                                            popup={true}
+                                            onClose={onCloseUpdateSubproduct}
+                                        >
+                                            <Modal.Header className='bg-white' />
+                                            <Modal.Body className='bg-white'>
+                                                <DetailSubProduct
+                                                    onSubmit={onSubmitUpdateSubproduct}
+                                                    onCancel={onCloseUpdateSubproduct}
+                                                    subProduct={sub}
+                                                />
+                                            </Modal.Body>
+                                        </Modal>
+                                        <div
+                                            style={{ backgroundColor: sub.color.colorValue }}
+                                            onClick={onCloseUpdateSubproduct}
+                                            className={className(
+                                                'h-[24px] w-[24px] mx-2 rounded-lg cursor-pointer',
+                                            )}
+                                        ></div>
+                                    </div>
                                 ))
                             )}
                             <button
