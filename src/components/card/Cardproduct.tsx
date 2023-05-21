@@ -25,6 +25,7 @@ const Cardproduct = ({
     const [modalUpdate, setModalUpdate] = useState(false);
     const [modalSubProduct, setModalSubProduct] = useState(false);
     const [modalUpdateSubProduct, setModalUpdateSubProduct] = useState(false);
+    const [selectedProduct, setSelectedProduct] = useState(product);
     const onCloseSubproduct = () => {
         setModalSubProduct(!modalSubProduct);
     };
@@ -40,6 +41,7 @@ const Cardproduct = ({
         setModalUpdateSubProduct(!modalUpdateSubProduct);
     };
     const onCloseUpdate = () => {
+        setSelectedProduct(product);
         setModalUpdate(!modalUpdate);
     };
     const onSubmitUpdate = (id: string, values: any) => {
@@ -79,7 +81,7 @@ const Cardproduct = ({
                     <DetailProduct
                         onSubmit={onSubmitUpdate}
                         onCancel={onCloseUpdate}
-                        product={product}
+                        product={selectedProduct}
                     />
                 </Modal.Body>
             </Modal>
