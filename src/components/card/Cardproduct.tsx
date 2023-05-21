@@ -164,7 +164,7 @@ const Cardproduct = ({
                                 +
                             </button>
                         </span>
-                        <TogglePublic productId='asdhjasgash' />
+                        <TogglePublic product={product} />
                     </div>
                 </div>
                 <div className='flex justify-center items-center py-4 mt-3 flex-col'>

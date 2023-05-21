@@ -2,10 +2,10 @@ import { type } from 'os';
 import React from 'react';
 
 type TogglePublicProps = {
-    productId: string;
+    product: any;
 };
 
-const TogglePublic = ({ productId }: TogglePublicProps) => {
+const TogglePublic = ({ product }: TogglePublicProps) => {
     const handleChange = (e: any) => {
         console.log(e.target.checked.toString());
     };
@@ -16,6 +16,7 @@ const TogglePublic = ({ productId }: TogglePublicProps) => {
                     <input
                         type='checkbox'
                         value=''
+                        checked={product.isPublic}
                         className='sr-only peer'
                         onChange={handleChange}
                     />

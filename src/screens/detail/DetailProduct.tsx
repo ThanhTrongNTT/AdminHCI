@@ -87,9 +87,6 @@ const DetailProduct = ({ onSubmit, onCancel, product }: UpdateProductryProps) =>
         setValue('name', product.name);
         setValue('description', product.description);
         setValue('form', product.form);
-        setValue('collectionId', product.collection.id);
-        setValue('categoryId', product.category.id);
-        setValue('styleId', product.style.id);
     }, []);
     return (
         <>

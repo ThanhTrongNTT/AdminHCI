@@ -48,7 +48,7 @@ function ListProduct() {
             if (res.result === null) {
                 toast.error(res.message);
             } else {
-                toast.success('Update Category success!');
+                toast.success('Update Product success!');
                 getAllProduct(pageNumber);
             }
         });
@@ -57,9 +57,9 @@ function ListProduct() {
         //* Excute Logic avout delete Size
         productApi.deleteProduct(id).then((res: any) => {
             if (res.result === null) {
-                toast.error('Delete Category unsuccess!');
+                toast.error('Delete Product unsuccess!');
             } else {
-                toast.success('Delete Category Success!');
+                toast.success('Delete Product Success!');
                 getAllProduct(pageNumber);
             }
         });
