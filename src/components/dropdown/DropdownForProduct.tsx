@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useWatch } from 'react-hook-form';
 import { className as classNameUtil } from '~/utils/className';
 
@@ -26,13 +26,15 @@ const DropdownForProduct = ({
         name,
         defaultValue: selected?.name ? selected?.name : dropdownLabel, // default value before the render
     });
-
+    const [isDeclare, setIsDeclare] = useState(true);
     const handleGetValue = (e: any) => {
+        console.log(e.target.value);
         setValue(name, e.target.value);
     };
     useEffect(() => {
-        if (selected) {
-            setValue(name, selected.id);
+        if (isDeclare) {
+            setValue(name, selected?.id);
+            setIsDeclare(false);
         }
     });
 
