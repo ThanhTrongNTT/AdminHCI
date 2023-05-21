@@ -5,12 +5,14 @@ import TogglePublic from '../toogle/TogglePublic';
 import NewSubproduct from '~/screens/new/NewSubproduct';
 import { className } from '~/utils/className';
 import DetailSubProduct from '~/screens/detail/DetailSubProduct';
+import { productApi } from '~/api/product.api';
 
 type CardProductProps = {
     onHandleDelete: (id: string) => void;
     onHandleSubmitUpdate: (id: string, values: any) => void;
     onHandleNewSubproduct: (productId: string, values: any) => void;
     onHandleUpdateSubproduct: (id: string, values: any) => void;
+    handleSetPublic: (product: any) => void;
     product: any;
 };
 
@@ -19,6 +21,7 @@ const Cardproduct = ({
     onHandleSubmitUpdate,
     onHandleNewSubproduct,
     onHandleUpdateSubproduct,
+    handleSetPublic,
     product,
 }: CardProductProps) => {
     const [modalDelete, setModalDelete] = useState(false);
@@ -54,6 +57,9 @@ const Cardproduct = ({
     };
     const onCancelDelete = () => {
         setModalDelete(!modalDelete);
+    };
+    const onHandleSetPublic = () => {
+        handleSetPublic(selectedProduct);
     };
     return (
         <>
@@ -166,7 +172,10 @@ const Cardproduct = ({
                                 +
                             </button>
                         </span>
-                        <TogglePublic product={product} />
+                        <TogglePublic
+                            product={selectedProduct}
+                            handleSetPublic={onHandleSetPublic}
+                        />
                     </div>
                 </div>
                 <div className='flex justify-center items-center py-4 mt-3 flex-col'>

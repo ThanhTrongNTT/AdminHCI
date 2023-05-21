@@ -32,9 +32,13 @@ const productApi = {
         const url = `product/${id}`;
         return AxiosClient.delete(url);
     },
-    setPublicProduct: (id: string) => {
-        const url = '';
-        return AxiosClient.post(url);
+    setActivateProduct: (id: string) => {
+        const url = `/product/${id}/activate`;
+        return AxiosClient.put(url);
+    },
+    setDeactivateProduct: (id: string) => {
+        const url = `/product/${id}/deactivate`;
+        return AxiosClient.put(url);
     },
 };
 const subProductApi = {

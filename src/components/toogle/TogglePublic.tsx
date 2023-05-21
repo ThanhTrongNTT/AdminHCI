@@ -1,13 +1,16 @@
 import { type } from 'os';
-import React from 'react';
+import React, { useState } from 'react';
 
 type TogglePublicProps = {
     product: any;
+    handleSetPublic: () => void;
 };
 
-const TogglePublic = ({ product }: TogglePublicProps) => {
+const TogglePublic = ({ product, handleSetPublic }: TogglePublicProps) => {
+    const [checked, setChecked] = useState(product.isPublic);
     const handleChange = (e: any) => {
-        console.log(e.target.checked.toString());
+        handleSetPublic();
+        setChecked(!checked);
     };
     return (
         <>
@@ -16,7 +19,7 @@ const TogglePublic = ({ product }: TogglePublicProps) => {
                     <input
                         type='checkbox'
                         value=''
-                        checked={product.isPublic}
+                        checked={checked}
                         className='sr-only peer'
                         onChange={handleChange}
                     />

@@ -74,6 +74,23 @@ function ListProduct() {
             }
         });
     };
+    const handleSetPublic = (product: any) => {
+        if (product.isPublic) {
+            productApi.setDeactivateProduct(product.id).then((res: any) => {
+                console.log(res);
+            });
+            toast.success('Deactive Product success!');
+            product.isPublic = false;
+            getAllProduct(pageNumber);
+        } else {
+            productApi.setActivateProduct(product.id).then((res: any) => {
+                console.log(res);
+            });
+            toast.success('Active Product success!');
+            product.isPublic = true;
+            getAllProduct(pageNumber);
+        }
+    };
     useEffect(() => {
         getAllProduct(pageNumber);
     }, []);
@@ -114,6 +131,7 @@ function ListProduct() {
                         onHandleNewSubproduct={onHandleNewSubproduct}
                         onHandleUpdateSubproduct={() => {}}
                         product={product}
+                        handleSetPublic={handleSetPublic}
                     />
                 ))}
             </div>
