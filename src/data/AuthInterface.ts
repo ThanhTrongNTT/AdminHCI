@@ -26,3 +26,7 @@ export interface ForgotPasswordDTO {
 export interface ResetPasswordDTO {
     password: string;
 }
+
+export interface LogoutDTO {
+    id: string;
+}

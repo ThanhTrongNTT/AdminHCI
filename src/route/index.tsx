@@ -3,15 +3,15 @@ import LayoutDefault from '~/layout/LayoutDefault';
 import Home from '~/screens/home/Home';
 import ListOrder from '~/screens/list/ListOrder';
 import ListProduct from '~/screens/list/ListProduct';
+import ListProductCategory from '~/screens/list/ListProductCategory';
+import ListProductCollection from '~/screens/list/ListProductCollection';
+import ListProductColor from '~/screens/list/ListProductColor';
+import ListProductSale from '~/screens/list/ListProductSale';
+import ListProductSize from '~/screens/list/ListProductSize';
+import ListProductStyle from '~/screens/list/ListProductStyle';
 import ListUser from '~/screens/list/ListUser';
 import Login from '~/screens/login/Login';
 import PrivateRoute from './privateRoute/PrivateRoute';
-import ListProductColor from '~/screens/list/ListProductColor';
-import ListProductSize from '~/screens/list/ListProductSize';
-import ListProductCollection from '~/screens/list/ListProductCollection';
-import ListProductCategory from '~/screens/list/ListProductCategory';
-import ListProductStyle from '~/screens/list/ListProductStyle';
-import ListProductSale from '~/screens/list/ListProductSale';
 
 function DeclareRouter() {
     return (

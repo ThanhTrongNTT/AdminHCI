@@ -2,6 +2,7 @@ import {
     ConfirmEmailDTO,
     ForgotPasswordDTO,
     LoginDTO,
+    LogoutDTO,
     RegisterDTO,
     ResetPasswordDTO,
     UpdateAccountDTO,
@@ -30,9 +31,9 @@ const authApi = {
         const url = 'auth/refresh-token';
         return AxiosClient.get(url);
     },
-    logout: () => {
+    logout: (id: LogoutDTO) => {
         const url = 'auth/log-out';
-        return AxiosClient.post(url);
+        return AxiosClient.post(url, { id: id });
     },
     updatePassword: (data: UpdatePasswordDTO) => {
         const url = 'auth/password';

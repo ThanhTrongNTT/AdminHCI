@@ -11,6 +11,7 @@
         "@testing-library/user-event": "^13.5.0",
         "@tippyjs/react": "^4.2.6",
         "@types/jest": "^27.5.2",
+        "@types/jwt-decode": "^3.1.0",
         "@types/node": "^16.18.22",
         "@types/react": "^18.0.31",
         "@types/react-dom": "^18.0.11",
