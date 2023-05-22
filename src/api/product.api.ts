@@ -13,23 +13,23 @@ import { PageDTO } from '~/data/Contanst';
 
 const productApi = {
     getAllProduct: (data: PageDTO) => {
-        const url = 'product';
+        const url = '/product';
         return AxiosClient.post(url, data);
     },
     getProductInfo: (id: string) => {
-        const url = `product/${id}`;
+        const url = `/product/${id}`;
         return AxiosClient.get(url);
     },
     createProduct: (data: ProductDTO) => {
-        const url = 'product/create';
+        const url = '/product/create';
         return AxiosClient.post(url, data);
     },
     updateProduct: (id: string, data: ProductDTO) => {
-        const url = `product/${id}/update`;
+        const url = `/product/${id}/update`;
         return AxiosClient.put(url, data);
     },
     deleteProduct: (id: string) => {
-        const url = `product/${id}`;
+        const url = `/product/${id}`;
         return AxiosClient.delete(url);
     },
     setActivateProduct: (id: string) => {
@@ -43,12 +43,12 @@ const productApi = {
 };
 const subProductApi = {
     createSubProduct: (productId: string, data: SubProductDTO) => {
-        const url = `product/${productId}/sub-product/create`;
+        const url = `/product/${productId}/sub-product/create`;
         console.log(url);
         return AxiosClient.post(url, data);
     },
     updateSubProduct: (productId: string, subProductId: string, data: SubProductDTO) => {
-        const url = `product/${productId}/sub-product/${subProductId}/update`;
+        const url = `/product/${productId}/sub-product/${subProductId}/update`;
         return AxiosClient.put(url, data);
     },
     deleteSubProduct: (productId: string, subProductId: string) => {
@@ -58,65 +58,65 @@ const subProductApi = {
 };
 const productCollectionApi = {
     getAllProductCollection: (data: PageDTO) => {
-        const url = 'product/collection';
+        const url = '/product/collection';
         return AxiosClient.post(url, data);
     },
     createProductCollection: (data: ProductCollectionDTO) => {
-        const url = 'product/collection/create';
+        const url = '/product/collection/create';
         return AxiosClient.post(url, data);
     },
     updateProductCollection: (id: string, data: ProductCollectionDTO) => {
-        const url = `product/collection/${id}/update`;
+        const url = `/product/collection/${id}/update`;
         return AxiosClient.put(url, data);
     },
     deleteProductCollection: (id: string) => {
-        const url = `product/collection/${id}`;
+        const url = `/product/collection/${id}`;
         return AxiosClient.delete(url);
     },
 };
 const productStyleApi = {
     getAllProductStyle: (data: PageDTO) => {
-        const url = 'product/style';
+        const url = '/product/style';
         return AxiosClient.post(url, data);
     },
     createProductStyle: (data: ProductStyleDTO) => {
-        const url = 'product/style/create';
+        const url = '/product/style/create';
         return AxiosClient.post(url, data);
     },
     updateProductStyle: (id: string, data: ProductSizeDTO) => {
-        const url = `product/style/${id}/update`;
+        const url = `/product/style/${id}/update`;
         return AxiosClient.put(url, data);
     },
     deleteProductStyle: (id: string) => {
-        const url = `product/style/${id}`;
+        const url = `/product/style/${id}`;
         return AxiosClient.delete(url);
     },
 };
 const productCategoryApi = {
     getAllProductCategory: (data: PageDTO) => {
-        const url = 'product/category';
+        const url = '/product/category';
         return AxiosClient.post(url, data);
     },
     createProductCategory: (data: ProductCategoryDTO) => {
-        const url = 'product/category/create';
+        const url = '/product/category/create';
         return AxiosClient.post(url, data);
     },
     updateProductCategory: (id: string, data: ProductCategoryDTO) => {
-        const url = `product/category/${id}/update`;
+        const url = `/product/category/${id}/update`;
         return AxiosClient.put(url, data);
     },
     deleteProductCategory: (id: string) => {
-        const url = `product/category/${id}`;
+        const url = `/product/category/${id}`;
         return AxiosClient.delete(url);
     },
 };
 const productSaleApi = {
     getAllProductSale: (data: PageDTO) => {
-        const url = 'product/sale';
+        const url = '/product/sale';
         return AxiosClient.post(url, data);
     },
     createProductSale: (data: ProductSaleDTO) => {
-        const url = 'product/sale/create';
+        const url = '/product/sale/create';
         return AxiosClient.post(url, data);
     },
     updateProductSale: (id: string, data: ProductSaleDTO) => {

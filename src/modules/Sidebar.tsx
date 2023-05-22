@@ -43,7 +43,7 @@ const Sidebar = () => {
             icon: <IconCategory />,
         },
         { title: 'Order', link: 'order', icon: <IconCart /> },
-        { title: 'Coupon', link: 'coupon', icon: <IconCourse /> },
+        { title: 'Sale', link: 'sale', icon: <IconCourse /> },
     ];
     return (
         <div className='bg-white rounded-xl py-5 w-20 lg:w-[250px] h-full'>

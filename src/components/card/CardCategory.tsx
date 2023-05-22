@@ -80,7 +80,7 @@ const CardCategory = ({
             </Modal>
             <div className='w-[350px] shadow-xl bg-white m-2 rounded-2xl'>
                 <img
-                    className='h-[450px] w-full rounded-t-2xl object-cover'
+                    className='h-[300px] w-full rounded-t-2xl object-cover'
                     src={
                         selectedCategory.mediaLink === 'https://google.com' ||
                         selectedCategory.mediaLink === null

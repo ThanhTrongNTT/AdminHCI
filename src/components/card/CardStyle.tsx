@@ -80,7 +80,7 @@ const CardStyle = ({ onHandleDelete, onHandleSubmitUpdate, selectedStyle }: Card
             </Modal>
             <div className='w-[350px] shadow-xl bg-white m-2 rounded-2xl'>
                 <img
-                    className='h-[300px] w-full rounded-t-2xl'
+                    className='h-[250px] w-full rounded-t-2xl'
                     src={
                         selectedStyle.mediaLink === 'https://google.com' ||
                         selectedStyle.mediaLink === null
@@ -94,16 +94,13 @@ const CardStyle = ({ onHandleDelete, onHandleSubmitUpdate, selectedStyle }: Card
                         <p className='text-black font-semibold text-lg h-[56px]'>
                             Style Name: {selectedStyle.name}
                         </p>
-                        <span className=''>
-                            <p className='font-semibold'>Title:</p>{' '}
-                            <p className='bg-gray-c3 rounded-2xl px-2 mx-auto text-left'>
-                                {selectedStyle?.title}
-                            </p>
+                        <span className='flex'>
+                            <p className='font-semibold'>Title:</p>
+                            <p className='h-[48px] px-2 text-left'>{selectedStyle?.title}</p>
                         </span>
-                        <span className=''>
+                        <span className='flex'>
                             <p className='font-semibold'>Subtite:</p>
-                            {''}
-                            <p className='bg-gray-c3 rounded-2xl px-2 mx-auto text-left'>
+                            <p className='px-2 text-left h-[48px]'>
                                 {shortenText(selectedStyle?.subTitle, MAX_LENGTH)}
                             </p>
                         </span>

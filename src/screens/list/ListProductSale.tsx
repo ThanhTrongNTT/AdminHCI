@@ -1,97 +1,95 @@
-import React, { useEffect, useState } from 'react';
-import { IconPlus } from '~/components/icon/Icon';
-import NewProductSize from '../new/NewProductSize';
 import { Button, Modal, Pagination } from 'flowbite-react';
-import { productSizeApi } from '~/api/product.api';
+import React, { useEffect, useState } from 'react';
+import { productSaleApi } from '~/api/product.api';
+import { IconPlus } from '~/components/icon/Icon';
+import NewProductSale from '../new/NewProductSale';
 import { toast } from 'react-toastify';
-import { className } from '~/utils/className';
-import DetailProductSize from '../detail/DetailProductSize';
+import DetailProductSale from '../detail/DetailProductSale';
 
-const ListProductSize = () => {
+const ListProductSale = () => {
+    const [sales, setSales] = useState([]);
     const [modalNew, setModalNew] = useState(false);
     const [modalUpdate, setModalUpdate] = useState(false);
+    const [modalAddProductInSale, setModalAddProductInSale] = useState(false);
     const [modalDelete, setModalDelete] = useState(false);
-    const [sizes, setSizes] = useState([]);
-    const [isLoadData, setIsLoadData] = useState(true);
+    const [saleCurrent, setSaleCurrent] = useState<any>();
     const [pageNumber, setPageNumber] = useState(1);
     const [totalElement, setTotalElement] = useState(0);
-    const [totalPages, setTotalPages] = useState(0);
-    const [selectedSize, setSelectedSize] = useState({
-        id: 1,
-        sizeName: 'Medium',
-        weight: '65-75kg',
-        height: '1m60-1m75',
-        isDelete: false,
-    });
-    const size = 5;
+    const [totalPages, setTotalPages] = useState(2);
+    const [isLoadData, setIsLoadData] = useState(true);
+    const size = 10;
     const onPageChange = (currentPage: number) => {
         setPageNumber(currentPage);
-        getAllSize(currentPage);
+        getAllSale(currentPage);
     };
-    const getAllSize = (currentPage: number) => {
+    const getAllSale = (currentPage: number) => {
         setIsLoadData(false);
-        const orders: string[] = [];
+        const orders: any[] = [
+            {
+                props: 'type',
+                sortDir: 'asc',
+            },
+        ];
         const filter: string[] = [];
         const data = { orders, filter, size, totalElement, pageNumber: currentPage };
-        productSizeApi.getAllProductSize(data).then((res: any) => {
+        productSaleApi.getAllProductSale(data).then((res: any) => {
             setTotalElement(Number(res.result.page.totalElement));
-            setSizes(res.result.data);
+            setSales(res.result.data);
             setIsLoadData(true);
         });
+    };
+    const newSaleHandler = (values: any) => {
+        productSaleApi.createProductSale(values).then((res: any) => {
+            if (res.result) {
+                toast.success(`Create Sale ${res.result.name} success!`);
+                getAllSale(pageNumber);
+            } else {
+                toast.error(res.message);
+            }
+        });
+        setModalNew(!modalNew);
     };
     const onCloseNew = () => {
         setModalNew(!modalNew);
     };
-    const onSubmitNew = (values: any) => {
-        //* Excute Logic create new Size
-        productSizeApi.createProductSize(values).then((res: any) => {
-            if (res.result) {
-                toast.success(`Create Size ${res.result.sizeName} success!`);
-                getAllSize(pageNumber);
-            } else {
-                toast.error(res.message);
-            }
-        });
-        setModalNew(!modalNew);
-    };
-    const onCloseUpdate = async (size?: any) => {
-        if (size) {
-            await setSelectedSize(size);
+    const onCloseUpdate = (sale?: any) => {
+        if (sale) {
+            setSaleCurrent(sale);
         }
         setModalUpdate(!modalUpdate);
     };
-    const updateColorHandle = (values: any) => {
-        //* Excute Logic about update Size
-        productSizeApi.updateProductSize(selectedSize.id, values).then((res: any) => {
+    const updateSaleHandle = (values: any) => {
+        productSaleApi.updateProductSale(saleCurrent.id, values).then((res: any) => {
             if (res.result === null) {
                 toast.error(res.message);
+                getAllSale(pageNumber);
             } else {
-                toast.success('Update Size success!');
-                getAllSize(pageNumber);
+                toast.success('Update Color success!');
+                getAllSale(pageNumber);
             }
             setModalUpdate(!modalUpdate);
         });
     };
-    const handleDeleteSize = () => {
-        //* Excute Logic avout delete Size
-        productSizeApi.deleteProductSize(selectedSize.id).then((res: any) => {
+    const handleDeleteColor = () => {
+        productSaleApi.deleteProductSale(saleCurrent.id).then((res: any) => {
             if (res.result === null) {
-                toast.error('Delete Size unsuccess!');
+                toast.error('Delete Sale unsuccess!');
+                getAllSale(pageNumber);
             } else {
-                toast.success('Delete Size Success!');
-                getAllSize(pageNumber);
+                toast.success('Delete Sale Success!');
+                getAllSale(pageNumber);
             }
             setModalDelete(!modalDelete);
         });
     };
-    const onCloseDelete = (size?: any) => {
-        if (size) {
-            setSelectedSize(size);
+    const onCloseDelete = (sale?: any) => {
+        if (sale) {
+            setSaleCurrent(sale);
         }
         setModalDelete(!modalDelete);
     };
     useEffect(() => {
-        getAllSize(pageNumber);
+        getAllSale(pageNumber);
     }, []);
     useEffect(() => {
         setTotalPages(Math.ceil(totalElement / size));
@@ -101,29 +99,25 @@ const ListProductSize = () => {
             <Modal show={modalNew} size='7xl' position='center' popup={true} onClose={onCloseNew}>
                 <Modal.Header className='bg-white' />
                 <Modal.Body className='bg-white'>
-                    <NewProductSize onSubmit={onSubmitNew} onCancel={onCloseNew} />
+                    <NewProductSale onSubmit={newSaleHandler} onCancel={onCloseNew} />
                 </Modal.Body>
             </Modal>
-            {modalUpdate ? (
-                <Modal
-                    show={modalUpdate}
-                    size='7xl'
-                    position='center'
-                    popup={true}
-                    onClose={onCloseUpdate}
-                >
-                    <Modal.Header className='bg-white' />
-                    <Modal.Body className='bg-white'>
-                        <DetailProductSize
-                            onSubmit={updateColorHandle}
-                            onCancel={onCloseUpdate}
-                            size={selectedSize}
-                        />
-                    </Modal.Body>
-                </Modal>
-            ) : (
-                ''
-            )}
+            <Modal
+                show={modalUpdate}
+                size='7xl'
+                position='center'
+                popup={true}
+                onClose={onCloseUpdate}
+            >
+                <Modal.Header className='bg-white' />
+                <Modal.Body className='bg-white'>
+                    <DetailProductSale
+                        onSubmit={updateSaleHandle}
+                        onCancel={onCloseUpdate}
+                        sale={saleCurrent}
+                    />
+                </Modal.Body>
+            </Modal>
             <Modal
                 show={modalDelete}
                 size='2xl'
@@ -135,10 +129,10 @@ const ListProductSize = () => {
                 <Modal.Body className='bg-white'>
                     <div>
                         <span className='flex justify-center items-center font-semibold text-xl p-4'>
-                            Do you want to delete Color with name: {selectedSize.sizeName}?
+                            Do you want to delete Color with name: {saleCurrent?.name}?
                         </span>
                         <div className='flex justify-center gap-4 p-5'>
-                            <Button color='success' onClick={handleDeleteSize}>
+                            <Button color='success' onClick={handleDeleteColor}>
                                 Yes, I'm sure
                             </Button>
                             <Button color='failure' onClick={onCloseDelete}>
@@ -154,47 +148,80 @@ const ListProductSize = () => {
                 onClick={() => setModalNew(!modalNew)}
             >
                 <span className='flex gap-2 items-center font-semibold'>
-                    <IconPlus /> Create New Product Size
+                    <IconPlus /> Create New Product Sale
                 </span>
             </button>
-            <div className='overflow-x-auto rounded-2xl border mx-4 border-gray-c4'>
-                <table className='bg-white  w-full text-sm text-left text-gray-400'>
+            <button
+                color='white'
+                className='rounded-2xl px-4 py-2 m-4 bg-white hover:bg-success'
+                onClick={() => setModalAddProductInSale(!modalAddProductInSale)}
+            >
+                <span className='flex gap-2 items-center font-semibold'>
+                    <IconPlus /> Add Product In Sale
+                </span>
+            </button>
+            <div className='overflow-x-auto rounded-2xl mx-4 border border-gray-c4'>
+                <table className='bg-white  w-[100%] text-sm text-left text-gray-400'>
                     <thead>
                         <tr className='border-b border-gray-c2'>
                             <th scope='col' className='py-3 px-6'>
-                                Size Name
+                                Sale Name
                             </th>
-                            <th scope='col' className='px-6'>
-                                Height
+                            <th scope='col' className='py-3 px-6'>
+                                Description
                             </th>
-                            <th scope='col' className='px-6'>
-                                Weight
+                            <th scope='col' className='py-3 px-6'>
+                                Products
                             </th>
-                            <th scope='col' className='px-6 text-center'>
+                            <th scope='col' className='py-3 px-6'>
+                                Type
+                            </th>
+                            <th scope='col' className='py-3 px-6 text-center'>
+                                Value
+                            </th>
+                            <th scope='col' className='py-3 px-6 text-center'>
                                 Action
                             </th>
                         </tr>
                     </thead>
                     <tbody>
-                        {sizes.map((size: any, index) => (
+                        {sales.map((sale: any, index) => (
                             <tr className='bg-white hover:bg-gray-c2 cursor-pointer' key={index}>
                                 <th
                                     scope='row'
                                     className='py-4 px-6 font-medium text-black whitespace-nowrap'
                                 >
-                                    {size.sizeName}
+                                    {sale.name}
                                 </th>
                                 <th
                                     scope='row'
                                     className='py-4 px-6 font-medium text-black whitespace-nowrap'
                                 >
-                                    {size.height}
+                                    {sale.description}
                                 </th>
                                 <th
                                     scope='row'
                                     className='py-4 px-6 font-medium text-black whitespace-nowrap'
                                 >
-                                    {size.weight}
+                                    {sale.numberProduct}
+                                </th>
+                                <th
+                                    scope='row'
+                                    className='py-4 px-6 font-medium text-black whitespace-nowrap'
+                                >
+                                    {sale.type}
+                                </th>
+                                <th
+                                    scope='row'
+                                    className='py-4 px-6 font-medium text-black whitespace-nowrap text-center'
+                                >
+                                    {sale.type === 'Percent'
+                                        ? sale.percent + '%'
+                                        : '- ' +
+                                          sale.value.toLocaleString('vi', {
+                                              style: 'currency',
+                                              currency: 'VND',
+                                          })}
                                 </th>
                                 <th
                                     scope='row'
@@ -203,13 +230,13 @@ const ListProductSize = () => {
                                     <div className='text-center'>
                                         <span
                                             className='text-white hover:bg-white hover:text-black bg-success  rounded-lg px-2 mx-2'
-                                            onClick={() => onCloseUpdate(size)}
+                                            onClick={() => onCloseUpdate(sale)}
                                         >
                                             Update
                                         </span>
                                         <span
                                             className='text-white bg-warning rounded-lg px-2 hover:bg-white hover:text-black mx-2'
-                                            onClick={() => onCloseDelete(size)}
+                                            onClick={() => onCloseDelete(sale)}
                                         >
                                             Delete
                                         </span>
@@ -232,4 +259,4 @@ const ListProductSize = () => {
     );
 };
 
-export default ListProductSize;
+export default ListProductSale;

@@ -3,13 +3,13 @@ import AxiosClient from './axiosClient/AxiosClient';
 import { PageDTO } from '~/data/Contanst';
 
 const userApi = {
-    editEmployee: (data: EditEmployeeDTO) => {
-        const url = 'user/edit';
+    getAllUser: (data: PageDTO) => {
+        const url = '/user';
         return AxiosClient.post(url, data);
     },
-    removeEmployee: (id: string) => {
-        const url = `user/remove/${id}`;
-        return AxiosClient.post(url);
+    createAdmin: (data: any) => {
+        const url = '/user/create/admin';
+        return AxiosClient.post(url, data);
     },
     viewHistory: (data: PageDTO) => {
         const url = '/user/view-history';

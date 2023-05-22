@@ -11,6 +11,7 @@ import ListProductSize from '~/screens/list/ListProductSize';
 import ListProductCollection from '~/screens/list/ListProductCollection';
 import ListProductCategory from '~/screens/list/ListProductCategory';
 import ListProductStyle from '~/screens/list/ListProductStyle';
+import ListProductSale from '~/screens/list/ListProductSale';
 
 function DeclareRouter() {
     return (
@@ -30,7 +31,7 @@ function DeclareRouter() {
                         <Route path='product-category' element={<ListProductCategory />} />
                         <Route path='product-style' element={<ListProductStyle />} />
                         <Route path='order' element={<ListOrder />} />
-                        <Route path='coupon' />
+                        <Route path='sale' element={<ListProductSale />} />
                     </Route>
                 </Route>
             </Routes>

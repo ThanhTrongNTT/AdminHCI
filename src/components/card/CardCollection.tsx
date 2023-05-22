@@ -88,7 +88,7 @@ const CardCollection = ({
             </Modal>
             <div className='w-[350px] bg-white m-2 rounded-2xl'>
                 <img
-                    className='h-[300px] w-full rounded-t-2xl'
+                    className='h-[250px] w-full object-cover rounded-t-2xl'
                     src={
                         selectedCollection.mediaLink === 'https://google.com' ||
                         selectedCollection.mediaLink === null
@@ -102,16 +102,13 @@ const CardCollection = ({
                         <p className='text-black font-semibold text-lg h-[56px]'>
                             Collection Name: {selectedCollection.name}
                         </p>
-                        <span className=''>
-                            <p className='font-semibold'>Title:</p>{' '}
-                            <p className='bg-gray-c3 rounded-2xl px-2 mx-auto text-left'>
-                                {selectedCollection?.title}
-                            </p>
+                        <span className='flex'>
+                            <p className='font-semibold'>Title:</p>
+                            <p className='px-2 text-left h-[48px]'>{selectedCollection?.title}</p>
                         </span>
-                        <span className=''>
+                        <span className='flex'>
                             <p className='font-semibold'>Subtite:</p>
-                            {''}
-                            <p className='bg-gray-c3 rounded-2xl px-2 mx-auto text-left'>
+                            <p className='px-2 text-left h-[48px]'>
                                 {shortenText(selectedCollection?.subTitle, MAX_LENGTH)}
                             </p>
                         </span>

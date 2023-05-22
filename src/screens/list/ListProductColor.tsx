@@ -161,14 +161,14 @@ const ListProductColor = () => {
             <div className='overflow-x-auto rounded-2xl border mx-4 border-gray-c4'>
                 <table className='bg-white  w-full text-sm text-left text-gray-400'>
                     <thead>
-                        <tr>
+                        <tr className='border-b border-gray-c2'>
                             <th scope='col' className='py-3 px-6'>
                                 Color Name
                             </th>
                             <th scope='col' className='px-6'>
                                 Color Value
                             </th>
-                            <th scope='col' className='px-6'>
+                            <th scope='col' className='px-6 text-center'>
                                 Action
                             </th>
                         </tr>
@@ -192,27 +192,28 @@ const ListProductColor = () => {
                                             isLightColor(color.colorValue)
                                                 ? 'text-black '
                                                 : 'text-white',
+                                            color.colorValue === '#ffffff'
+                                                ? 'border border-gray-c5'
+                                                : '',
                                             'p-2 rounded-xl',
                                         )}
                                     >
-                                        {color.colorValue}
+                                        {color.colorValue.toUpperCase()}
                                     </span>
                                 </th>
                                 <th
                                     scope='row'
                                     className='py-4 px-6 font-medium text-black whitespace-nowrap'
                                 >
-                                    <div className='flex items-center gap-5'>
-                                        <div>
-                                            <span
-                                                className='text-white hover:bg-gray-c3 bg-success  rounded-lg px-2'
-                                                onClick={() => onCloseUpdate(color)}
-                                            >
-                                                Update
-                                            </span>
-                                        </div>
+                                    <div className='text-center'>
                                         <span
-                                            className='text-white bg-warning rounded-lg px-2 hover:bg-gray-c4'
+                                            className='text-white hover:bg-white hover:text-black bg-success  rounded-lg px-2 mx-2'
+                                            onClick={() => onCloseUpdate(color)}
+                                        >
+                                            Update
+                                        </span>
+                                        <span
+                                            className='text-white bg-warning rounded-lg px-2 hover:bg-white hover:text-black mx-2'
                                             onClick={() => onCloseDelete(color)}
                                         >
                                             Delete
