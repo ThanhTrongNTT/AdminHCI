@@ -4,7 +4,7 @@ import { IconPlus } from '~/components/icon/Icon';
 import NewProduct from '../new/NewProduct';
 import { productApi, subProductApi } from '~/api/product.api';
 import { toast } from 'react-toastify';
-import Cardproduct from '~/components/card/Cardproduct';
+import Cardproduct from '~/components/card/CardProduct';
 
 function ListProduct() {
     const [modalNew, setModalNew] = useState(false);

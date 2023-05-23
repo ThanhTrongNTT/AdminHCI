@@ -29,6 +29,14 @@ const ListProductSale = () => {
                 props: 'type',
                 sortDir: 'asc',
             },
+            {
+                props: 'percent',
+                sortDir: 'asc',
+            },
+            {
+                props: 'value',
+                sortDir: 'asc',
+            },
         ];
         const filter: string[] = [];
         const data = { orders, filter, size, totalElement, pageNumber: currentPage };

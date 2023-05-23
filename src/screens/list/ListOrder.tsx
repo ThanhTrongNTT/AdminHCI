@@ -135,12 +135,6 @@ const ListOrder = () => {
                                         >
                                             Detail
                                         </span>
-                                        {/* <span
-                                            className='text-white bg-warning rounded-lg px-2 hover:bg-white hover:text-black mx-2'
-                                            onClick={() => onCloseDelete(order)}
-                                        >
-                                            Delete
-                                        </span> */}
                                     </div>
                                 </th>
                             </tr>

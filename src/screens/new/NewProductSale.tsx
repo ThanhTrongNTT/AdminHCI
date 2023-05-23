@@ -14,6 +14,7 @@ const schema = Yup.object({
     numberProduct: Yup.number().required('Please enter number of product!').max(100),
     type: Yup.string().required('Please choose your type of sale!'),
     percent: Yup.number().notRequired().max(100),
+    value: Yup.number().notRequired(),
 });
 
 type NewProductSaleProps = {
