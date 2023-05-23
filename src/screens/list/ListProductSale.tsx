@@ -159,7 +159,7 @@ const ListProductSale = () => {
                     <IconPlus /> Create New Product Sale
                 </span>
             </button>
-            <button
+            {/* <button
                 color='white'
                 className='rounded-2xl px-4 py-2 m-4 bg-white hover:bg-success'
                 onClick={() => setModalAddProductInSale(!modalAddProductInSale)}
@@ -167,7 +167,7 @@ const ListProductSale = () => {
                 <span className='flex gap-2 items-center font-semibold'>
                     <IconPlus /> Add Product In Sale
                 </span>
-            </button>
+            </button> */}
             <div className='overflow-x-auto rounded-2xl mx-4 border border-gray-c4'>
                 <table className='bg-white  w-[100%] text-sm text-left text-gray-400'>
                     <thead>
