@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import authApi from '~/api/auth.api';
+import { toast } from 'react-toastify';
 import userApi from '~/api/user.api';
 import CardUser from '~/components/card/CardUser';
 
@@ -26,7 +26,20 @@ function ListUser() {
             setIsLoadData(true);
         });
     };
-    const onUpdate = () => {};
+    const onUpdate = (id: string, values: any) => {
+        const data = {
+            id,
+            ...values,
+        };
+        userApi.updateUser(data).then((res: any) => {
+            if (res.result === null) {
+                toast.error(res.message);
+            } else {
+                toast.success('Update User success!');
+                getAllUser(pageNumber);
+            }
+        });
+    };
     useEffect(() => {
         getAllUser(pageNumber);
     }, []);

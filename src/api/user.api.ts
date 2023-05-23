@@ -15,5 +15,9 @@ const userApi = {
         const url = '/user/view-history';
         return AxiosClient.post(url, data);
     },
+    updateUser: (data: any) => {
+        const url = '/user/edit';
+        return AxiosClient.post(url, data);
+    },
 };
 export default userApi;

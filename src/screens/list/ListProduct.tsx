@@ -4,7 +4,7 @@ import { IconPlus } from '~/components/icon/Icon';
 import NewProduct from '../new/NewProduct';
 import { productApi, subProductApi } from '~/api/product.api';
 import { toast } from 'react-toastify';
-import Cardproduct from '~/components/card/CardProduct';
+import CardProduct from '~/components/card/Cardproduct';
 
 function ListProduct() {
     const [modalNew, setModalNew] = useState(false);
@@ -145,7 +145,7 @@ function ListProduct() {
             </div>
             <div className='flex flex-wrap items-center justify-center gap-4'>
                 {products.map((product: any, index) => (
-                    <Cardproduct
+                    <CardProduct
                         key={index}
                         onHandleSubmitUpdate={onHandleSubmitUpdate}
                         onHandleDelete={onHandleDelete}

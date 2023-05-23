@@ -10,10 +10,13 @@ type UserCartProps = {
 
 const CardUser = ({ onUpdate, user }: UserCartProps) => {
     const [modalEdit, setModalEdit] = useState(false);
+    const [selectedUser, setSelectedUser] = useState(user);
     const onCloseEdit = () => {
+        setSelectedUser(user);
         setModalEdit(!modalEdit);
     };
-    const onSubmitEdit = () => {
+    const onSubmitEdit = (values: any) => {
+        onUpdate(user.id, values);
         setModalEdit(!modalEdit);
     };
     return (
@@ -21,7 +24,11 @@ const CardUser = ({ onUpdate, user }: UserCartProps) => {
             <Modal show={modalEdit} size='7xl' position='center' popup={true} onClose={onCloseEdit}>
                 <Modal.Header className='bg-white' />
                 <Modal.Body className='bg-white'>
-                    <DetailUser />
+                    <DetailUser
+                        onSubmit={onSubmitEdit}
+                        onCancel={onCloseEdit}
+                        user={selectedUser}
+                    />
                 </Modal.Body>
             </Modal>
             <div className='w-[300px] shadow-xl bg-white m-2 rounded-2xl'>
