@@ -44,7 +44,6 @@ const productApi = {
 const subProductApi = {
     createSubProduct: (productId: string, data: SubProductDTO) => {
         const url = `/product/${productId}/sub-product/create`;
-        console.log(url);
         return AxiosClient.post(url, data);
     },
     updateSubProduct: (productId: string, subProductId: string, data: SubProductDTO) => {

@@ -84,7 +84,6 @@ const NewSubproduct = ({ onSubmit, onCancel }: NewSubproductProps) => {
             ...values,
             medias: medias,
         };
-        console.log(data);
         onSubmit(data);
         resetForm();
     };
@@ -97,7 +96,6 @@ const NewSubproduct = ({ onSubmit, onCancel }: NewSubproductProps) => {
                 setImages((images) => [...images, newImage]);
             }
             setIsUploaded(true);
-            console.log(isUploaded.toString());
         } else {
             toast.error('You have to upload max is 4 images!');
         }

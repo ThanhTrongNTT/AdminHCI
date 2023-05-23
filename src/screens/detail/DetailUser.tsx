@@ -45,7 +45,6 @@ const DetailUser = ({ onSubmit, onCancel, user }: UpdateUserProps) => {
     };
     const updateCategoryHandler = (values: any) => {
         onSubmit(values);
-        console.log(values);
         resetForm(values);
     };
     const handleGetValue = (e: any) => {
@@ -67,8 +66,6 @@ const DetailUser = ({ onSubmit, onCancel, user }: UpdateUserProps) => {
         }
     }, [errors]);
     useEffect(() => {
-        console.log(user);
-
         setValue('name', user.fullName);
         setValue('email', user.email);
         setValue('address', user.address);

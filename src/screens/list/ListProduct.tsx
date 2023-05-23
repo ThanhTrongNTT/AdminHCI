@@ -98,14 +98,27 @@ function ListProduct() {
     const handleSetPublic = (product: any) => {
         if (product.isPublic) {
             productApi.setDeactivateProduct(product.id).then((res: any) => {
-                console.log(res);
+                if (res.result === null) {
+                    toast.error(res.message);
+                    product.isPublic = true;
+                    getAllProduct(pageNumber);
+                } else {
+                    toast.success('Deactive Product success!');
+                    product.isPublic = false;
+                    getAllProduct(pageNumber);
+                }
             });
-            toast.success('Deactive Product success!');
-            product.isPublic = false;
-            getAllProduct(pageNumber);
         } else {
             productApi.setActivateProduct(product.id).then((res: any) => {
-                console.log(res);
+                if (res.result === null) {
+                    toast.error(res.message);
+                    product.isPublic = false;
+                    getAllProduct(pageNumber);
+                } else {
+                    toast.success('Active Product success!');
+                    product.isPublic = true;
+                    getAllProduct(pageNumber);
+                }
             });
             toast.success('Active Product success!');
             product.isPublic = true;

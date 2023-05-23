@@ -6,8 +6,6 @@ type CardSubproductProps = {
 const CardSubproduct = ({ subProduct }: CardSubproductProps) => {
     const [product, setProduct] = useState(subProduct);
     useEffect(() => {
-        console.log(subProduct);
-
         setProduct(subProduct);
     }, [subProduct]);
 

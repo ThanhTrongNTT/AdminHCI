@@ -62,7 +62,7 @@ AxiosClient.interceptors.response.use(
             return error.message;
         } else if (error.response.status === 401) {
             prevRequest.sent = true;
-            console.log('refreshToken: ', refreshToken);
+            // console.log('refreshToken: ', refreshToken);
             const config = {
                 headers: {
                     'Content-Type': 'application/json',
@@ -73,7 +73,7 @@ AxiosClient.interceptors.response.use(
                 config,
             );
             if (newAccessToken.data.accessToken) {
-                console.log('newAccessToken', newAccessToken);
+                // console.log('newAccessToken', newAccessToken);
                 sessionStorage.setItem('accessToken', newAccessToken.data.accessToken);
             }
         }

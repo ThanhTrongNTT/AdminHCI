@@ -21,7 +21,6 @@ function ListUser() {
         const data = { orders, filter, size, totalElement, pageNumber: currentPage };
         userApi.getAllUser(data).then((res: any) => {
             setTotalElement(Number(res.result.page.totalElement));
-            console.log(res);
             setUsers(res.result.data);
             setIsLoadData(true);
         });

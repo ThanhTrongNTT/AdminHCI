@@ -80,6 +80,7 @@ const Sidebar = () => {
                     //     </li>
                     // </Link>
                     <NavLink
+                        key={index}
                         to={menu.link}
                         className={({ isActive }) =>
                             isActive

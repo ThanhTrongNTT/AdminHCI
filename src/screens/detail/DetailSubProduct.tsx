@@ -73,7 +73,6 @@ const DetailSubProduct = ({ onSubmit, onCancel, onDelete, subProduct }: UpdateSu
                 setImages((images) => [...images, newImage]);
             }
             setIsUploaded(true);
-            console.log(isUploaded.toString());
         } else {
             toast.error('You have to upload max is 4 images!');
         }
@@ -94,8 +93,6 @@ const DetailSubProduct = ({ onSubmit, onCancel, onDelete, subProduct }: UpdateSu
                 (error: any) => console.log(error),
                 () => {
                     getDownloadURL(uploadTask.snapshot.ref).then((url: string) => {
-                        console.log(url);
-
                         setUrls((prev) => [...prev, url]);
                     });
                 },
