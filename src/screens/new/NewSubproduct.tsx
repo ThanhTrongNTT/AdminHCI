@@ -63,6 +63,8 @@ const NewSubproduct = ({ onSubmit, onCancel }: NewSubproductProps) => {
         setIsSubmitted(false);
         setUrls([]);
         setImages([]);
+        const mediaInput = document.getElementById('media') as HTMLInputElement;
+        mediaInput.value = '';
     };
     const onHandleSubmitNew = (values: any) => {
         const medias: Array<MediaDTO> = [];
