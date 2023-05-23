@@ -33,12 +33,12 @@ const CardUser = ({ onUpdate, user }: UserCartProps) => {
             </Modal>
             <div className='w-[300px] shadow-xl bg-white m-2 rounded-2xl'>
                 <div className='py-4 px-6'>
-                    <Avatar
+                    {/* <Avatar
                         size={'lg'}
                         // img={user.}
                         img='https://cdn-icons-png.flaticon.com/512/727/727399.png?w=826&t=st=1684741655~exp=1684742255~hmac=5ddb28695b8590e3c08fad8896ddd9315c7d8120fa70ff95475f51892bbe25a4'
                         rounded={true}
-                    />
+                    /> */}
                 </div>
                 <div className='flex flex-col text-left px-4'>
                     <span className='flex items-center'>
