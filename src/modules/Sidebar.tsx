@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import LogoDefault from '~/components/logo/LogoDefault';
 import {
     IconCart,
@@ -7,44 +7,50 @@ import {
     IconDashboard,
     IconUser,
 } from '../components/icon/Icon';
+import { className } from '~/utils/className';
+import { useEffect, useState } from 'react';
 
 const Sidebar = () => {
+    const location = useLocation();
+    const isActive = (path: string) => {
+        return pathname.replace('/admin', '') === path;
+    };
+    const [pathname, setPathname] = useState('');
     const menus = [
-        { title: 'Dashboard', link: '/admin' },
-        { title: 'User', link: 'user', icon: <IconUser /> },
+        { title: 'User', link: 'user' },
         {
             title: 'Product',
             link: 'product',
-            icon: <IconCategory />,
         },
         {
             title: 'Product Collection',
             link: 'product-collection',
-            icon: <IconCategory />,
+            isActive: false,
+            notActive: true,
         },
         {
             title: 'Product Category',
             link: 'product-category',
-            icon: <IconCategory />,
         },
         {
             title: 'Product Style',
             link: 'product-style',
-            icon: <IconCategory />,
         },
         {
             title: 'Product Color',
             link: 'product-color',
-            icon: <IconCategory />,
         },
         {
             title: 'Product Size',
             link: 'product-size',
-            icon: <IconCategory />,
         },
-        { title: 'Order', link: 'order', icon: <IconCart /> },
-        { title: 'Sale', link: 'sale', icon: <IconCourse /> },
+        { title: 'Order', link: 'order' },
+        { title: 'Sale', link: 'sale' },
     ];
+    useEffect(() => {
+        setPathname(location.pathname);
+    }, [location.pathname]);
+
     return (
         <div className='bg-white rounded-xl py-5 w-20 lg:w-[250px] h-full'>
             <div className='flex justify-center p-4'>
@@ -56,20 +62,34 @@ const Sidebar = () => {
             </div>
             <hr className='mx-6 border-1.5 border-gray-c2' />
             <div className='px-6'>
-                <ul className='pt-2'>
-                    {menus.map((menu, index) => (
-                        <Link to={menu.link} key={index}>
-                            <li className='text-black text-sm flex font-OpenSans items-center gap-x-4 cursor-pointer p-2 hover:bg-gray-c2 rounded-md mt-2 justify-between'>
-                                <span className='text-2l block float-left'>
-                                    {menu.icon ? menu.icon : <IconDashboard />}
-                                </span>
-                                <span className='text-base font-OpenSans font-medium flex-1 duration-200'>
-                                    {menu.title}
-                                </span>
-                            </li>
-                        </Link>
-                    ))}
-                </ul>
+                {menus.map((menu, index) => (
+                    // <Link to={menu.link} key={index}>
+                    //     <li
+                    //         className={className(
+                    //             'text-black text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-gray-c2 rounded-md mt-2 justify-between ',
+                    //             isActive(
+                    //                 menu.link.replace('/admin', '')
+                    //                     ? 'bg-gray-c2 font-semibold'
+                    //                     : '',
+                    //             ),
+                    //         )}
+                    //     >
+                    //         <span className='text-base font-OpenSans font-medium flex-1 duration-200'>
+                    //             {menu.title}
+                    //         </span>
+                    //     </li>
+                    // </Link>
+                    <NavLink
+                        to={menu.link}
+                        className={({ isActive }) =>
+                            isActive
+                                ? 'bg-gray-c3 font-bold rounded-md text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-white mt-2 justify-between'
+                                : 'font-normal text-[#8E94A3] text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-gray-c2 rounded-md mt-2 justify-between'
+                        }
+                    >
+                        {menu.title}
+                    </NavLink>
+                ))}
             </div>
         </div>
     );
