@@ -129,8 +129,6 @@ const NewSubproduct = ({ onSubmit, onCancel }: NewSubproductProps) => {
                 setUploading(false);
                 setIsUploaded(false);
                 setIsSubmitted(!isSubmitted);
-                const mediaInput = document.getElementById('media') as HTMLInputElement;
-                mediaInput.value = '';
             })
             .catch((err) => console.log(err));
     };
