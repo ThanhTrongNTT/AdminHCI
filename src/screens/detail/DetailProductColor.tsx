@@ -76,8 +76,8 @@ const DetailProductColor = ({ onSubmit, onCancel, color }: UpdateProductColorPro
                     <form onSubmit={handleSubmit(updateColorHandler)}>
                         <div className='flex flex-col gap-4'>
                             <WrapperField>
-                                <label htmlFor='' className='font-bold text-left'>
-                                    Color Name:
+                                <label htmlFor='' className='font-bold flex text-left'>
+                                    Color Name<p className='text-red-700 ml-1'>*</p>:
                                 </label>
                                 <InputDefault
                                     placeholder='Enter Color Name'
@@ -90,9 +90,9 @@ const DetailProductColor = ({ onSubmit, onCancel, color }: UpdateProductColorPro
                                 <div className='flex flex-col'>
                                     <label
                                         htmlFor=''
-                                        className='font-bold flex-1 text-left col-span-1'
+                                        className='font-bold flex flex-1 text-left col-span-1'
                                     >
-                                        Color Value:
+                                        Color Value<p className='text-red-700 ml-1'>*</p>:
                                     </label>
                                     <div className='flex gap-5'>
                                         <SketchPicker

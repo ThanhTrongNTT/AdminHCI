@@ -10,6 +10,7 @@ import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import Dropdown from '~/components/dropdown/Dropdown';
 import { compareFieldValues, compareTwoObject } from '~/utils/CompareObject';
+import InputTextarea from '~/components/input/InputTextarea';
 
 const schema = Yup.object({
     name: Yup.string().required('Please enter your Product Name!'),
@@ -96,8 +97,8 @@ const DetailProduct = ({ onSubmit, onCancel, product }: UpdateProductryProps) =>
                     <form onSubmit={handleSubmit(updateHandler)}>
                         <div className='flex flex-col gap-4'>
                             <WrapperField>
-                                <label htmlFor='' className='font-bold text-left'>
-                                    Product Name:
+                                <label htmlFor='' className='font-bold text-left flex'>
+                                    Product Name <p className='text-red-700 ml-1'>*</p>:
                                 </label>
                                 <InputDefault
                                     placeholder='Enter Product Name'
@@ -110,20 +111,26 @@ const DetailProduct = ({ onSubmit, onCancel, product }: UpdateProductryProps) =>
                                 <label htmlFor='' className='font-bold flex-1 text-left col-span-1'>
                                     Description:
                                 </label>
-                                <InputDefault
+                                <InputTextarea
                                     placeholder='Enter Description'
                                     control={control}
                                     name='description'
                                     className='col-span-3'
                                 />
+                                {/* <InputDefault
+                                    placeholder='Enter Description'
+                                    control={control}
+                                    name='description'
+                                    className='col-span-3'
+                                /> */}
                             </WrapperField>
                             <div className='flex gap-5'>
                                 <div className='flex flex-col flex-1'>
                                     <label
                                         htmlFor=''
-                                        className='font-bold flex-1 text-left col-span-1'
+                                        className='font-bold flex flex-1 text-left col-span-1'
                                     >
-                                        Category:
+                                        Category<p className='text-red-700 ml-1'>*</p>:
                                     </label>
                                     <DropdownForProduct
                                         control={control}
@@ -138,9 +145,9 @@ const DetailProduct = ({ onSubmit, onCancel, product }: UpdateProductryProps) =>
                                 <div className='flex flex-col flex-1'>
                                     <label
                                         htmlFor=''
-                                        className='font-bold flex-1 text-left col-span-1'
+                                        className='font-bold flex flex-1 text-left col-span-1'
                                     >
-                                        Collection:
+                                        Collection<p className='text-red-700 ml-1'>*</p>:
                                     </label>
                                     <DropdownForProduct
                                         control={control}
@@ -157,9 +164,9 @@ const DetailProduct = ({ onSubmit, onCancel, product }: UpdateProductryProps) =>
                                 <div className='flex flex-col flex-1'>
                                     <label
                                         htmlFor=''
-                                        className='font-bold flex-1 text-left col-span-1'
+                                        className='font-bold flex flex-1 text-left col-span-1'
                                     >
-                                        Form:
+                                        Form<p className='text-red-700 ml-1'>*</p>:
                                     </label>
                                     <Dropdown
                                         control={control}
@@ -174,9 +181,9 @@ const DetailProduct = ({ onSubmit, onCancel, product }: UpdateProductryProps) =>
                                 <div className='flex flex-col flex-1'>
                                     <label
                                         htmlFor=''
-                                        className='font-bold flex-1 text-left col-span-1'
+                                        className='font-bold flex flex-1 text-left col-span-1'
                                     >
-                                        Material:
+                                        Material<p className='text-red-700 ml-1'>*</p>:
                                     </label>
                                     <Dropdown
                                         control={control}
@@ -191,9 +198,9 @@ const DetailProduct = ({ onSubmit, onCancel, product }: UpdateProductryProps) =>
                                 <div className='flex flex-col flex-1'>
                                     <label
                                         htmlFor=''
-                                        className='font-bold flex-1 text-left col-span-1'
+                                        className='font-bold flex flex-1 text-left col-span-1'
                                     >
-                                        Style:
+                                        Style<p className='text-red-700 ml-1'>*</p>:
                                     </label>
                                     <DropdownForProduct
                                         control={control}

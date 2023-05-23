@@ -165,8 +165,8 @@ const DetailSubProduct = ({ onSubmit, onCancel, onDelete, subProduct }: UpdateSu
                     <form onSubmit={handleSubmit(updateHandler)}>
                         <div className='flex flex-col gap-4'>
                             <WrapperField>
-                                <label htmlFor='' className='font-bold text-left'>
-                                    Price:
+                                <label htmlFor='' className='font-bold flex text-left'>
+                                    Price<p className='text-red-700 ml-1'>*</p>:
                                 </label>
                                 <InputDefault
                                     placeholder='Enter Price'
@@ -176,8 +176,11 @@ const DetailSubProduct = ({ onSubmit, onCancel, onDelete, subProduct }: UpdateSu
                                 />
                             </WrapperField>
                             <WrapperField>
-                                <label htmlFor='' className='font-bold flex-1 text-left col-span-1'>
-                                    Quantity:
+                                <label
+                                    htmlFor=''
+                                    className='font-bold flex flex-1 text-left col-span-1'
+                                >
+                                    Quantity<p className='text-red-700 ml-1'>*</p>:
                                 </label>
                                 <InputDefault
                                     placeholder='Enter Quantity'
@@ -190,9 +193,9 @@ const DetailSubProduct = ({ onSubmit, onCancel, onDelete, subProduct }: UpdateSu
                                 <div className='flex flex-col flex-1'>
                                     <label
                                         htmlFor=''
-                                        className='font-bold flex-1 text-left col-span-1'
+                                        className='font-bold flex flex-1 text-left col-span-1'
                                     >
-                                        Color:
+                                        Color<p className='text-red-700 ml-1'>*</p>:
                                     </label>
                                     <DropdownForColor
                                         control={control}
@@ -207,9 +210,9 @@ const DetailSubProduct = ({ onSubmit, onCancel, onDelete, subProduct }: UpdateSu
                                 <div className='flex flex-col flex-1'>
                                     <label
                                         htmlFor=''
-                                        className='font-bold flex-1 text-left col-span-1'
+                                        className='font-bold flex flex-1 text-left col-span-1'
                                     >
-                                        Size:
+                                        Size<p className='text-red-700 ml-1'>*</p>:
                                     </label>
                                     <DropdownForSize
                                         control={control}

@@ -67,8 +67,8 @@ const DetailProductSize = ({ onSubmit, onCancel, size }: UpdateProductSizeProps)
                     <form onSubmit={handleSubmit(updateSizeHandler)}>
                         <div className='flex flex-col gap-4'>
                             <WrapperField>
-                                <label htmlFor='' className='font-bold text-left'>
-                                    Size Name:
+                                <label htmlFor='' className='font-bold flex text-left'>
+                                    Size Name<p className='text-red-700 ml-1'>*</p>:
                                 </label>
                                 <InputDefault
                                     placeholder='Enter Size Name'
@@ -79,8 +79,11 @@ const DetailProductSize = ({ onSubmit, onCancel, size }: UpdateProductSizeProps)
                                 />
                             </WrapperField>
                             <WrapperField>
-                                <label htmlFor='' className='font-bold flex-1 text-left col-span-1'>
-                                    Height Value:
+                                <label
+                                    htmlFor=''
+                                    className='font-bold flex flex-1 text-left col-span-1'
+                                >
+                                    Height Value<p className='text-red-700 ml-1'>*</p>:
                                 </label>
                                 <InputDefault
                                     placeholder='Enter Height Value'
@@ -90,8 +93,11 @@ const DetailProductSize = ({ onSubmit, onCancel, size }: UpdateProductSizeProps)
                                 />
                             </WrapperField>
                             <WrapperField>
-                                <label htmlFor='' className='font-bold flex-1 text-left col-span-1'>
-                                    Weight Value:
+                                <label
+                                    htmlFor=''
+                                    className='font-bold flex flex-1 text-left col-span-1'
+                                >
+                                    Weight Value<p className='text-red-700 ml-1'>*</p>:
                                 </label>
                                 <InputDefault
                                     placeholder='Enter Weight Value'

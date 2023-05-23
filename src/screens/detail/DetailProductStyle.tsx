@@ -130,8 +130,8 @@ const DetailProductStyle = ({ onSubmit, onCancel, style }: UpdateProductStylePro
                     <form onSubmit={handleSubmit(updateCategoryHandler)}>
                         <div className='flex flex-col gap-4'>
                             <WrapperField>
-                                <label htmlFor='' className='font-bold text-left'>
-                                    Style Name:
+                                <label htmlFor='' className='font-bold flex text-left'>
+                                    Style Name<p className='text-red-700 ml-1'>*</p>:
                                 </label>
                                 <InputDefault
                                     placeholder='Enter Style Name'
@@ -141,8 +141,8 @@ const DetailProductStyle = ({ onSubmit, onCancel, style }: UpdateProductStylePro
                                 />
                             </WrapperField>
                             <WrapperField>
-                                <label htmlFor='' className='font-bold text-left'>
-                                    Title:
+                                <label htmlFor='' className='font-bold flex text-left'>
+                                    Title<p className='text-red-700 ml-1'>*</p>:
                                 </label>
                                 <InputDefault
                                     placeholder='Enter Title'
@@ -152,8 +152,8 @@ const DetailProductStyle = ({ onSubmit, onCancel, style }: UpdateProductStylePro
                                 />
                             </WrapperField>
                             <WrapperField>
-                                <label htmlFor='' className='font-bold text-left'>
-                                    Subtitle:
+                                <label htmlFor='' className='font-bold flex text-left'>
+                                    Subtitle<p className='text-red-700 ml-1'>*</p>:
                                 </label>
                                 <InputDefault
                                     placeholder='Enter Subtitle'

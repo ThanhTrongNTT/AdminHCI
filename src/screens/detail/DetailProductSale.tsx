@@ -112,8 +112,8 @@ const DetailProductSale = ({ onSubmit, onCancel, sale }: UpdateProductSaleProps)
                     <form onSubmit={handleSubmit(updateSaleHandler)}>
                         <div className='flex flex-col gap-4'>
                             <WrapperField>
-                                <label htmlFor='' className='font-bold text-left'>
-                                    Sale Name:
+                                <label htmlFor='' className='font-bold flex text-left'>
+                                    Sale Name<p className='text-red-700 ml-1'>*</p>:
                                 </label>
                                 <InputDefault
                                     placeholder='Enter Sale Name'
@@ -123,8 +123,11 @@ const DetailProductSale = ({ onSubmit, onCancel, sale }: UpdateProductSaleProps)
                                 />
                             </WrapperField>
                             <WrapperField>
-                                <label htmlFor='' className='font-bold flex-1 text-left col-span-1'>
-                                    Description:
+                                <label
+                                    htmlFor=''
+                                    className='font-bold flex flex-1 text-left col-span-1'
+                                >
+                                    Description<p className='text-red-700 ml-1'>*</p>:
                                 </label>
                                 <InputDefault
                                     placeholder='Enter Description'
@@ -134,8 +137,11 @@ const DetailProductSale = ({ onSubmit, onCancel, sale }: UpdateProductSaleProps)
                                 />
                             </WrapperField>
                             <WrapperField>
-                                <label htmlFor='' className='font-bold flex-1 text-left col-span-1'>
-                                    Number Of Product:
+                                <label
+                                    htmlFor=''
+                                    className='font-bold flex flex-1 text-left col-span-1'
+                                >
+                                    Number Of Product<p className='text-red-700 ml-1'>*</p>:
                                 </label>
                                 <InputDefault
                                     placeholder='Enter Number of Product'
@@ -145,8 +151,11 @@ const DetailProductSale = ({ onSubmit, onCancel, sale }: UpdateProductSaleProps)
                                 />
                             </WrapperField>
                             <WrapperField>
-                                <label htmlFor='' className='font-bold flex-1 text-left col-span-1'>
-                                    Type:
+                                <label
+                                    htmlFor=''
+                                    className='font-bold flex flex-1 text-left col-span-1'
+                                >
+                                    Type<p className='text-red-700 ml-1'>*</p>:
                                 </label>
                                 <select
                                     value={selectedValue}

@@ -7,6 +7,7 @@ import { useForm } from 'react-hook-form';
 import WrapperField from '~/components/common/WrapperField';
 import InputDefault from '~/components/input/InputDefault';
 import { className } from '~/utils/className';
+import InputTextarea from '~/components/input/InputTextarea';
 
 const schema = Yup.object({
     name: Yup.string().required('Please enter your Sale Name!'),
@@ -85,8 +86,8 @@ const NewProductSale = ({ onSubmit, onCancel }: NewProductSaleProps) => {
                     <form onSubmit={handleSubmit(newSaleHandler)}>
                         <div className='flex flex-col gap-4'>
                             <WrapperField>
-                                <label htmlFor='' className='font-bold text-left'>
-                                    Sale Name:
+                                <label htmlFor='' className='font-bold flex text-left'>
+                                    Sale Name<p className='text-red-700 ml-1'>*</p>:
                                 </label>
                                 <InputDefault
                                     placeholder='Enter Sale Name'
@@ -99,7 +100,7 @@ const NewProductSale = ({ onSubmit, onCancel }: NewProductSaleProps) => {
                                 <label htmlFor='' className='font-bold flex-1 text-left col-span-1'>
                                     Description:
                                 </label>
-                                <InputDefault
+                                <InputTextarea
                                     placeholder='Enter Description'
                                     control={control}
                                     name='description'
@@ -107,8 +108,11 @@ const NewProductSale = ({ onSubmit, onCancel }: NewProductSaleProps) => {
                                 />
                             </WrapperField>
                             <WrapperField>
-                                <label htmlFor='' className='font-bold flex-1 text-left col-span-1'>
-                                    Number Of Product:
+                                <label
+                                    htmlFor=''
+                                    className='font-bold flex flex-1 text-left col-span-1'
+                                >
+                                    Number Of Product<p className='text-red-700 ml-1'>*</p>:
                                 </label>
                                 <InputDefault
                                     placeholder='Enter Number of Product'
@@ -118,8 +122,11 @@ const NewProductSale = ({ onSubmit, onCancel }: NewProductSaleProps) => {
                                 />
                             </WrapperField>
                             <WrapperField>
-                                <label htmlFor='' className='font-bold flex-1 text-left col-span-1'>
-                                    Type:
+                                <label
+                                    htmlFor=''
+                                    className='font-bold flex flex-1 text-left col-span-1'
+                                >
+                                    Type<p className='text-red-700 ml-1'>*</p>:
                                 </label>
                                 <select
                                     value={selectedValue}

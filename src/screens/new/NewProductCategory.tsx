@@ -115,8 +115,8 @@ const NewProductCategory = ({ onSubmit, onCancel }: NewProductCategoryProps) => 
                     <form onSubmit={handleSubmit(onHandleSubmitNew)}>
                         <div className='flex flex-col gap-4'>
                             <WrapperField>
-                                <label htmlFor='' className='font-bold text-left'>
-                                    Category Name:
+                                <label htmlFor='' className='font-bold flex text-left'>
+                                    Category Name<p className='text-red-700 ml-1'>*</p>:
                                 </label>
                                 <InputDefault
                                     placeholder='Enter Category Name'
@@ -126,8 +126,11 @@ const NewProductCategory = ({ onSubmit, onCancel }: NewProductCategoryProps) => 
                                 />
                             </WrapperField>
                             <div className='flex flex-col flex-1'>
-                                <label htmlFor='' className='font-bold flex-1 text-left col-span-1'>
-                                    Gender:
+                                <label
+                                    htmlFor=''
+                                    className='font-bold flex flex-1 text-left col-span-1'
+                                >
+                                    Gender<p className='text-red-700 ml-1'>*</p>:
                                 </label>
                                 <Dropdown
                                     control={control}

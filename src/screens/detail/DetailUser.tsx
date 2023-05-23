@@ -85,8 +85,8 @@ const DetailUser = ({ onSubmit, onCancel, user }: UpdateUserProps) => {
                     <form onSubmit={handleSubmit(updateCategoryHandler)}>
                         <div className='flex flex-col gap-4'>
                             <WrapperField>
-                                <label htmlFor='' className='font-bold text-left'>
-                                    User Name:
+                                <label htmlFor='' className='font-bold flex text-left'>
+                                    User Name<p className='text-red-700 ml-1'>*</p>:
                                 </label>
                                 <InputDefault
                                     placeholder='Enter User Name'
@@ -96,8 +96,8 @@ const DetailUser = ({ onSubmit, onCancel, user }: UpdateUserProps) => {
                                 />
                             </WrapperField>
                             <WrapperField>
-                                <label htmlFor='' className='font-bold text-left'>
-                                    User Email:
+                                <label htmlFor='' className='font-bold flex text-left'>
+                                    User Email<p className='text-red-700 ml-1'>*</p>:
                                 </label>
                                 <InputDefault
                                     placeholder='Enter User Email'
@@ -129,8 +129,11 @@ const DetailUser = ({ onSubmit, onCancel, user }: UpdateUserProps) => {
                                 />
                             </WrapperField>
                             <div className='flex flex-col flex-1'>
-                                <label htmlFor='' className='font-bold flex-1 text-left col-span-1'>
-                                    Gender:
+                                <label
+                                    htmlFor=''
+                                    className='font-bold flex flex-1 text-left col-span-1'
+                                >
+                                    Gender<p className='text-red-700 ml-1'>*</p>:
                                 </label>
                                 <select
                                     value={selectedValue}
