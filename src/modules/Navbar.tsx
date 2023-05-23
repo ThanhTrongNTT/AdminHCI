@@ -41,14 +41,14 @@ const Navbar = () => {
                                     placement='bottom-start'
                                     render={(attrs) => (
                                         <div
-                                            className='bg-white w-[200px] rounded-[4px]'
+                                            className='bg-white w-[200px] rounded-[4px] cursor-pointer'
                                             {...attrs}
                                         >
                                             <div
                                                 className='py-[10px] pl-4 pr-2 hover:bg-[rgba(22,_24,_35,_0.04)]'
                                                 onClick={handleLogout}
                                             >
-                                                <div className='flex cursor-pointer items-center'>
+                                                <div className='flex items-center'>
                                                     <i className='mr-5'>
                                                         <IconSignOut />
                                                     </i>
