@@ -17,7 +17,7 @@ type CardProductProps = {
     product: any;
 };
 
-const Cardproduct = ({
+const CardProduct = ({
     onHandleDelete,
     onHandleSubmitUpdate,
     onHandleNewSubproduct,
@@ -31,6 +31,14 @@ const Cardproduct = ({
     const [modalSubProduct, setModalSubProduct] = useState(false);
     const [modalUpdateSubProduct, setModalUpdateSubProduct] = useState(false);
     const [selectedProduct, setSelectedProduct] = useState(product);
+    const shortenText = (text: string, maxLength: number) => {
+        if (text.length <= maxLength) {
+            return text; // Trả về đoạn văn bản gốc nếu nó đã ngắn hơn hoặc bằng maxLength
+        }
+
+        const shortened = text.substr(0, maxLength); // Cắt đoạn văn bản ban đầu thành maxLength ký tự
+        return `${shortened}...`; // Thêm dấu "..." vào cuối đoạn văn bản ngắn
+    };
     const onCloseSubproduct = () => {
         setModalSubProduct(!modalSubProduct);
     };
@@ -129,15 +137,17 @@ const Cardproduct = ({
             <div className='w-[320px] h-[450px] shadow-xl bg-white m-2 rounded-2xl'>
                 <div className='flex flex-col mt-3 px-2'>
                     <div className='ml-5'>
-                        <p className='text-black font-semibold text-lg h-[56px]'>
-                            Product Name: {product.name}
+                        <p className='text-black font-semibold text-lg h-[52px] my-1'>
+                            Product Name: {shortenText(product.name, 40)}
                         </p>
-                        <p className=''>Description: {product.description}</p>
-                        <p className=''>Form: {product.form}</p>
-                        <p className=''>Material: {product.material}</p>
-                        <p className=''>Collection: {product.collection.name}</p>
-                        <p className=''>
-                            Category: {product.category.name} -{' '}
+                        <p className='h-[72px] my-1'>
+                            Description: {shortenText(product.description, 70)}
+                        </p>
+                        <p className='my-1'>Form: {product.form}</p>
+                        <p className='my-1'>Material: {product.material}</p>
+                        <p className='my-1'>Collection: {product.collection.name}</p>
+                        <p className='my-1'>
+                            Category: {shortenText(product.category.name, 15)} -{' '}
                             {product.category.gender.toUpperCase()}
                         </p>
                         <p className=''>Style: {product.style.name}</p>
@@ -216,4 +226,4 @@ const Cardproduct = ({
     );
 };
 
-export default Cardproduct;
+export default CardProduct;
