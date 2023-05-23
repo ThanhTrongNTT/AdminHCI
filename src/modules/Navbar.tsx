@@ -32,7 +32,7 @@ const Navbar = () => {
                     <div className='flex items-center mx-5'>
                         <div className='flex items-center gap-2'>
                             <div className='flex items-center'>
-                                <p className='text-white'>Thanh Trong</p>
+                                <p className='text-white'>{user.fullName}</p>
                                 <Tippy
                                     interactive
                                     delay={[0, 200]}
