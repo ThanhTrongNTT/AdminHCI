@@ -9,6 +9,7 @@ import WrapperField from '~/components/common/WrapperField';
 import InputDefault from '~/components/input/InputDefault';
 import { Button } from 'flowbite-react';
 import { className } from '~/utils/className';
+import InputTextarea from '~/components/input/InputTextarea';
 
 const schema = Yup.object({
     name: Yup.string().required('Please enter your Collection Name!'),
@@ -155,7 +156,7 @@ const DetailProductStyle = ({ onSubmit, onCancel, style }: UpdateProductStylePro
                                 <label htmlFor='' className='font-bold flex text-left'>
                                     Subtitle<p className='text-red-700 ml-1'>*</p>:
                                 </label>
-                                <InputDefault
+                                <InputTextarea
                                     placeholder='Enter Subtitle'
                                     control={control}
                                     name='subTitle'

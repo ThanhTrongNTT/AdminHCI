@@ -9,6 +9,7 @@ import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 import storage from '~/api/firebase/Firebase';
 import { Button } from 'flowbite-react';
 import { className } from '~/utils/className';
+import InputTextarea from '~/components/input/InputTextarea';
 
 const schema = Yup.object({
     name: Yup.string().required('Please enter your Collection Name!'),
@@ -141,7 +142,7 @@ const NewProductStyle = ({ onSubmit, onCancel }: NewProductStyleProps) => {
                                 <label htmlFor='' className='font-bold flex text-left'>
                                     Subtitle<p className='text-red-700 ml-1'>*</p>:
                                 </label>
-                                <InputDefault
+                                <InputTextarea
                                     placeholder='Enter Subtitle'
                                     control={control}
                                     name='subTitle'

@@ -7,6 +7,7 @@ import WrapperField from '~/components/common/WrapperField';
 import InputDefault from '~/components/input/InputDefault';
 import { className } from '~/utils/className';
 import { Button } from 'flowbite-react';
+import InputTextarea from '~/components/input/InputTextarea';
 
 const schema = Yup.object({
     name: Yup.string().required('Please enter your Sale Name!'),
@@ -129,7 +130,7 @@ const DetailProductSale = ({ onSubmit, onCancel, sale }: UpdateProductSaleProps)
                                 >
                                     Description<p className='text-red-700 ml-1'>*</p>:
                                 </label>
-                                <InputDefault
+                                <InputTextarea
                                     placeholder='Enter Description'
                                     control={control}
                                     name='description'
