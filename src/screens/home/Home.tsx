@@ -13,9 +13,8 @@ const widgets = [
 const Home = () => {
     return (
         <>
-            <div>
-                <div className='grid grid-cols-4 auto-rows-auto gap-y-4'>
-                    {widgets.map((widget, index) => (
+            <div className='items-center'>
+                {/* {widgets.map((widget, index) => (
                         <Widget
                             key={index}
                             title={widget.title}
@@ -23,8 +22,10 @@ const Home = () => {
                             percent={widget.percent}
                             icon={widget.icon}
                         />
-                    ))}
-                </div>
+                    ))} */}
+                <p className='text-center font-bold text-3xl text-white mt-auto'>
+                    CHÀO MỪNG BẠN ĐẾN VỚI GIAO DIỆN QUẢN LÝ CỬA HÀNG BÁN QUẦN ÁO ONLINE
+                </p>
             </div>
         </>
     );

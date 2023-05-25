@@ -41,9 +41,9 @@ const CardUser = ({ onUpdate, user }: UserCartProps) => {
                     /> */}
                 </div>
                 <div className='flex flex-col text-left px-4'>
-                    <span className='flex items-center'>
+                    <span className='flex items-center '>
                         <p className='text-black font-semibold text-lg'>Email: </p>
-                        <p className='px-2'>{user.email}</p>
+                        <p className='px-2 title__card-home'>{user.email}</p>
                     </span>
                     <span className='flex flex-wrap flex-col h-[52px]'>
                         <p className='text-black font-semibold text-lg'>User Name:</p>

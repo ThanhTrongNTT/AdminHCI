@@ -161,7 +161,7 @@ const ListProductColor = () => {
             <div className='overflow-x-auto rounded-2xl border mx-4 border-gray-c4'>
                 <table className='bg-white  w-full text-sm text-left text-gray-400'>
                     <thead>
-                        <tr className='border-b border-gray-c2'>
+                        <tr>
                             <th scope='col' className='py-3 px-6'>
                                 Color Name
                             </th>

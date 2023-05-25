@@ -62,7 +62,7 @@ const DetailProductSize = ({ onSubmit, onCancel, size }: UpdateProductSizeProps)
     return (
         <>
             <div className='p-2'>
-                <h1 className='font-bold text-3xl mb-7 text-center'>Create New Product Size</h1>
+                <h1 className='font-bold text-3xl mb-7 text-center'>Update Product Size</h1>
                 <div className='w-full p-2 bg-white rounded-xl overflow-y-auto h-[450px]'>
                     <form onSubmit={handleSubmit(updateSizeHandler)}>
                         <div className='flex flex-col gap-4'>

@@ -95,7 +95,7 @@ const ListOrder = () => {
                                     scope='row'
                                     className='py-4 px-6 font-medium text-black whitespace-nowrap'
                                 >
-                                    {order.user.fullName}
+                                    {order.user?.fullName}
                                 </th>
                                 <th
                                     scope='row'

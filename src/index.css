@@ -55,3 +55,11 @@
         transform: translateY(-20px);
     }
 }
+.title__card-home {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
+}

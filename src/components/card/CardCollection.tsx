@@ -70,7 +70,8 @@ const CardCollection = ({
                             <h1 className='text-2xl font-bold p-3'>Delete Collection</h1>
                             <span>
                                 <h1>
-                                    Do you want delete category with name: {selectedCollection.name}
+                                    Do you want delete collection with name:{' '}
+                                    {selectedCollection.name}
                                 </h1>{' '}
                             </span>
 

@@ -126,7 +126,7 @@ const DetailProductStyle = ({ onSubmit, onCancel, style }: UpdateProductStylePro
     return (
         <>
             <div>
-                <h1 className='font-bold text-3xl mb-7 text-center'>Update Collection</h1>
+                <h1 className='font-bold text-3xl mb-7 text-center'>Update Style</h1>
                 <div className='w-full p-2 bg-white rounded-xl overflow-y-auto h-[450px]'>
                     <form onSubmit={handleSubmit(updateCategoryHandler)}>
                         <div className='flex flex-col gap-4'>

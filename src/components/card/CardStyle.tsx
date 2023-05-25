@@ -61,9 +61,9 @@ const CardStyle = ({ onHandleDelete, onHandleSubmitUpdate, selectedStyle }: Card
                 <Modal.Body className='bg-white'>
                     <>
                         <div className='items-center text-center'>
-                            <h1 className='text-2xl font-bold p-3'>Delete Collection</h1>
+                            <h1 className='text-2xl font-bold p-3'>Delete Style</h1>
                             <span>
-                                <h1>Do you want delete category with name: {selectedStyle.name}</h1>{' '}
+                                <h1>Do you want delete style with name: {selectedStyle.name}</h1>{' '}
                             </span>
 
                             <div className='flex items-center justify-center gap-20 mt-10'>

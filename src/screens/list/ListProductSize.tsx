@@ -135,7 +135,7 @@ const ListProductSize = () => {
                 <Modal.Body className='bg-white'>
                     <div>
                         <span className='flex justify-center items-center font-semibold text-xl p-4'>
-                            Do you want to delete Color with name: {selectedSize.sizeName}?
+                            Do you want to delete Size with name: {selectedSize.sizeName}?
                         </span>
                         <div className='flex justify-center gap-4 p-5'>
                             <Button color='success' onClick={handleDeleteSize}>

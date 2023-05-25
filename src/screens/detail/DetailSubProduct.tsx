@@ -157,7 +157,7 @@ const DetailSubProduct = ({ onSubmit, onCancel, onDelete, subProduct }: UpdateSu
     return (
         <>
             <div>
-                <h1 className='font-bold text-3xl mb-7 text-center'>Create New Subproduct</h1>
+                <h1 className='font-bold text-3xl mb-7 text-center'>Update Subproduct</h1>
                 <div className='w-full p-2 bg-white rounded-xl overflow-y-auto h-[450px]'>
                     <form onSubmit={handleSubmit(updateHandler)}>
                         <div className='flex flex-col gap-4'>
